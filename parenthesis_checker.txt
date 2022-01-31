@@ -1,0 +1,34 @@
+def ispar(self, x):
+        # code here
+        stack = []
+        for i in range(len(x)):
+            if x[i] in ('{', '(', '['):
+                stack.append(x[i])
+            elif x[i] in ('}', ')', ']'):
+                if len(stack)>0:
+                    current_char = stack.pop()
+                    if current_char == '{':
+                        if x[i] != '}':
+                            return False
+                    elif current_char == '(':
+                        if x[i] != ')':
+                            return False
+                    elif current_char == '[':
+                        if x[i] != ']':
+                            return False
+                else:
+                    return False
+        if len(stack) ==0:
+            return True
+        else:
+            return False
+    
+
+Input:
+{([])}
+Output: 
+true
+Explanation: 
+{ ( [ ] ) }. Same colored brackets can form 
+balaced pairs, with 0 number of 
+unbalanced bracket.
