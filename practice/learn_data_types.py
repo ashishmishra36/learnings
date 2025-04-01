@@ -5,6 +5,26 @@
 # print(lss)
 from itertools import count
 
+arr =  [90,4,4,4,44,7777,0]
+def arraySortedOrNot(arr):
+    f,g = 1,1
+    if len(arr)>1:
+        for i in range(len(arr)-1):
+            if arr[i]< arr[i+1]:
+                f= 0
+        for i in range(len(arr)-1):
+            if arr[i]>arr[i+1]:
+                g= 0
+        return f+g==1
+    return True
+
+print(arraySortedOrNot(arr))
+
+
+
+
+
+
 # # Use range() to print all the even numbers from 0 to 10.
 # print([a for a in range(0,11) if a%2==0])
 
@@ -41,20 +61,20 @@ from itertools import count
 # Note: If at any instance, k is greater or equal to the array size, then reverse the entire array.
 # You shouldn't return any array, modify the given array in place.
 
-n = 204
-def evenlyDivides(n):
-    # code here
-    a = n
-    r,c = 0,0
-    while a > 0:
-        r = a%10
-        if r !=0:
-            if n%r ==0:
-                c= c+1
-        a = a//10
-    return c
+# n = 204
+# def evenlyDivides(n):
+#     # code here
+#     a = n
+#     r,c = 0,0
+#     while a > 0:
+#         r = a%10
+#         if r !=0:
+#             if n%r ==0:
+#                 c= c+1
+#         a = a//10
+#     return c
 
-print(evenlyDivides(n))
+# print(evenlyDivides(n))
 
 
 
