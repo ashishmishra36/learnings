@@ -1,5 +1,7 @@
 #LESSER OF TWO EVENS: Write a function that returns the lesser of two given numbers if both numbers are even,
 # but returns the greater if one or both numbers are odd
+import pytest
+
 
 def lesser_of_even(a,b):
     if a%2 ==0 and b%2 ==0:
@@ -53,7 +55,9 @@ def myfunc(numbers):
     print(c)
     return '007' in c
 
+@pytest.mark.demo
+def test_method():
+    assert 3==4, 'Error ! 3 is not equal to 4 !!'
 
-print(myfunc([1,7,2,0,4,5,0]))
-
-
+def test_login():
+    assert 3==4, 'Error ! 3 is not equal to 4 !!'

@@ -75,27 +75,7 @@ def firstRepeated(arr):
             return x+1
     return -1
 
-# BInary search on sorted array
-a = [1,2,5,7,8,9,9,9,11,18,26]
-def binary_search(a, target):
-    # left : start of array / right = end of the array
-    left, right = 0 , len(a)-1
-    print(left,right)
-    # run the loop until left is equal to right
-    while left<=right:
-        mid = (left + right) // 2
-        print(left, right, mid)
-        if a[mid] == target:
-            return mid
-        # if target is bigger than middle element it means target is present on right side of the mid
-        # since previous steps we already checked that its not equal to mid so lets make left = next of mid index
-        elif a[mid]<target:
-            print(left, right, mid)
-            left = mid+1
-        else:
-            print(left, right, mid)
-            right = mid-1
-    return -1
+
 
 # print(binary_search(a,18))
 
