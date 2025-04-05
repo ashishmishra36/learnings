@@ -75,9 +75,26 @@ def firstRepeated(arr):
             return x+1
     return -1
 
+def binarysearch( arr, k):
+    # Code Here
+    s= []
+    l = 0
+    r = len(arr)-1
+    result =-1
+    while l <= r:
+        mid = (l+r) // 2
+        print(l,r,mid)
+        if arr[mid] == k:
+            result = mid
+            r = mid-1
+        elif arr[mid] < k:
+            l = mid + 1
+        else:
+            r = mid -1
+    return result
 
-
-# print(binary_search(a,18))
+arr= [1, 2,2,2,2, 5, 5,78,99]
+print(binarysearch(arr,5))
 
 
 

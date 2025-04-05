@@ -46,17 +46,27 @@ def number_division():
 def ask_for_integer():
   while True:
     try:
-      result = int(input('Please inter a number: '))
-      print(f'number is : {result}')
+      result = int(input('Input an integer: '))
+      print(f'Thank you, your number squared is: {result**2}')
     except:
-      print('Error ! oh Its not a number')
+      print('An error occurred! Please try again!')
     else:
       break
     # finally:
     #   print('now finally it will will be printed')
 
 
-ask_for_integer()
+def count_vowel(word):
+  c=0
+  for x in word:
+    if x in ('a','e','i','o','u'):
+     c=c+1
+  return c
+
+
+
+print(count_vowel('ashish'))
+
 
 
 
