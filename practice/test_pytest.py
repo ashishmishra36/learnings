@@ -13,20 +13,22 @@ def test_method_one():
 def test_method_two():
     s = 'Ashish'
     assert len(s)==6, 'test failed: length is not as per expectation'
-@pytest.mark.skip
-def test_login():
-    assert 3==4, 'Error ! 3 is not equal to 4 !!'
+
+
+@pytest.mark.parametrize('first, second', [(1,2),(4,2), (23,3)])
+def test_login(first,second):
+    assert first>second, 'Error ! 3 is not equal to 4 !!'
 
 @pytest.mark.skip
 def test_method_three():
     s = 'Ashish'
     assert len(s) == 6, 'test failed: length is not as per expectation'
 
-@pytest.mark.skip
-def test_method_four():
-    s = 'Ashish'
-    assert len(s)==6, 'test failed: length is not as per expectation'
+@pytest.mark.parametrize('word', ['ashish', 'mishra', 'qwedfg', 'pixel'])
+def test_method_four(word):
+    assert len(word)==6, 'test failed: length is not as per expectation'
 
+@pytest.mark.skip
 def test_google():
     service = Service(executable_path=ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service)
@@ -35,6 +37,7 @@ def test_google():
     assert driver.title =='Google'
     driver.quit()
 
+@pytest.mark.skip
 def test_facebook():
     service = Service(executable_path=ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service)
@@ -43,6 +46,7 @@ def test_facebook():
     assert driver.title =='Facebook - log in or sign up'
     driver.quit()
 
+@pytest.mark.skip
 def test_linkedin():
     service = Service(executable_path=ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service)
@@ -51,7 +55,7 @@ def test_linkedin():
     assert driver.title =='LinkedIn'
     driver.quit()
 
-
+@pytest.mark.skip
 def test_perm_time_line():
     service = Service(executable_path=ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service)

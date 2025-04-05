@@ -17,7 +17,8 @@ Below are the steps I followed to set-up Python in my local-
 ** About Pytest **
 test with a given keyword: pytest -k login -v | Output: will pick all test which have keyword 'login' -v means - more verbose
 Parallel execution: pytest -n 5
-html report: pytest test_pytest.py -v -s --html=report.html
+html report: pytest test_pytest.py -v -s --html=report.html || -s means no print output in the report just in the terminal
+We can keep the init_driver fixture in the class or in the conftest.py to make global 
 
 
 
