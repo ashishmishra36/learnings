@@ -14,9 +14,25 @@ def MaxZero(arr, n):
     else:
         return -1
 
+def max_zero(arr, n):
+    # create a dictionary , start from left to right get the count of zeros for each string
+    # take the maximum of the dict , if not in dict then return -1
+    freq={}
+    for i in range(n):
+        freq[i] = str(arr[i]).count('0')
+    print(freq)
+    # m = max(freq.values())
+    # for i in freq:
+    #     if freq[i] == m and m>0:
+    #         return arr[i]
+    m =0
+    result =-1
+    for i in freq:
+        if freq[i] > m :
+            m = freq[i]
+            result= arr[m]
+    return result
 
-Input: N = 5
-arr[] = {10, 20, 3000, 9999, 200}
-Output:  3000
-Explanation: 3000 contains 3 zero's 
-in it.
+arr = [1, 20, 3, 9999, 2]
+n=5
+print(max_zero(arr, n))

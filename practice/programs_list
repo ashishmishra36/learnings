@@ -1,0 +1,124 @@
+### 🔁 **Two Pointers / Sliding Window**
+
+1. Longest Substring Without Repeating Characters  
+2. Trapping Rain Water  
+3. Container With Most Water *(added)*  
+4. Find Pythagorean Triplets  
+5. Subarray with Given Sum  
+6. Reverse a String / Number  
+7. Reverse Words in a Sentence  
+8. Reverse Array in Groups  
+9. Longest Palindrome in a String  
+10. Longest Distinct Characters in a String  
+11. Minimum Size Subarray Sum *(added)*  
+12. Remove Duplicates (from string/array using 2-pointer)
+
+
+### 🔎 **Searching / Binary Search**
+
+1. Search a Sorted List in O(log n)  
+2. K'th Smallest Element  
+3. Check if List Contains an Integer x  
+4. Find Element with Left Side Smaller and Right Side Greater  
+5. Square Root of a Number (Binary Search approach) *(added)*
+
+
+### 📊 **Array / List Manipulation**
+
+1. Kadane’s Algorithm  
+2. Missing Number in Array  
+3. Sort an Array of 0s, 1s and 2s (Dutch National Flag Problem)  
+4. Leaders in an Array  
+5. Equilibrium Point  
+6. Stock Buy and Sell  
+7. Chocolate Distribution Problem  
+8. Inversion of Array  
+9. Convert Array into Zig-Zag Fashion  
+10. Last Index of 1  
+11. Find 2nd / 3rd Highest Element  
+12. Divide Even and Odd Numbers  
+13. Sort by Even and Odd  
+14. Find Largest and Smallest in Unsorted List  
+15. Remove All Duplicates from Integer List  
+16. Sort Using QuickSort  
+17. Sort Using MergeSort  
+18. Rearrange Alternately (max/min from ends)  
+19. Order an Array Using Even/Odd Rules  
+20. Use List as Array *(could be skipped; basic)*  
+21. Count Occurrences of an Element *(added)*  
+22. Majority Element (> n/2 times) *(added)*
+
+### 🤝 **Working with Pairs / Hashing**
+
+1. Count Pairs with a Given Sum  
+2. Two Sum Problem  
+3. 3Sum Problem
+4. Pair with Given Difference
+
+### 🔣 **String Manipulation**
+
+1. Longest Palindrome  
+2. Permutations of a String  
+3. Check Anagram  
+4. Remove Adjacent Duplicates  
+5. Is Rotated by Two Places  
+6. Reverse Words in a String  
+7. Roman to Integer  
+8. Remove Duplicates  
+9. Form a Palindrome  
+10. Implement `atoi()`  
+11. Implement `strStr()`  
+12. Longest Common Prefix  
+13. Find Duplicates in a List / Repeated String  
+14. Find 2nd Repeating Word  
+15. Split a String by Multiple Delimiters  
+16. Reverse Sequence of Words  
+17. First Repeated Character  
+18. Is String Palindrome  
+19. Find All Permutations of String  
+20. Largest Palindrome in Text *(optional, advanced)*
+
+### 🔢 **Number Problems**
+
+1. Armstrong Number  
+2. Fibonacci Sequence  
+3. Check Prime Number *(added)*  
+4. Count Digits / Sum of Digits *(added)*
+
+---
+
+### 🔁 **Recursion**
+
+1. Reverse a String  
+2. Fibonacci Numbers  
+3. Factorial of a Number *(added)*  
+4. All Subsets of a String/Array *(added)*
+
+---
+
+### 🔢 **Matrix Manipulation**
+
+1. Spiral Traversal of a Matrix  
+2. Diagonal Traversal  
+3. Rotate Matrix by 90 Degrees *(added)*  
+4. Search in a 2D Matrix *(added)*
+
+---
+
+### ➗ **Set / Map / Misc. Operations**
+
+1. Intersection of Two Lists  
+2. Union of Two Lists *(added)*  
+3. Frequency Count using HashMap *(added)*
+
+---
+
+### 💰 **Greedy / Sorting Based**
+
+1. Minimum Platforms  
+2. Chocolate Distribution  
+3. Largest Number Formed from Array  
+4. Activity Selection Problem *(added)*
+
+---
+

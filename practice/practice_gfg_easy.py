@@ -93,8 +93,80 @@ def binarysearch( arr, k):
             r = mid -1
     return result
 
-arr= [1, 2,2,2,2, 5, 5,78,99]
-print(binarysearch(arr,5))
+arr=  [8]
+target = 80
+# fid a number less than or equal to the given number
+# if there is a repetition then take max index
+def findFloor(arr, target):
+    result = -1
+    for i in range(len(arr)):
+        if arr[i]<=target:
+            result =i
+    return result
+
+# find the dupe element in a given list , and return a list
+a = [1,2,3,9,8,4,6,2,1,7,8,1]
+def find_dupe(a):
+    seen = set()
+    dupe=set()
+    for i in a:
+        if i in seen:
+            dupe.add(i)
+        seen.add(i)
+    return list(dupe)
+
+
+#Given an array arr[], find the first repeating element. The element should occur more than once and the
+# index of its first occurrence should be the smallest.
+# Note:- The position you return should be according to 1-based indexing.
+arr = [1, 5, 3, 4, 3, 5, 6]
+def first_Repeated(arr):
+    n = len(arr)
+    seen= []
+    repeated=0
+    result = -1
+    for i in range(n):
+        if arr[i] in seen and i>repeated:
+            repeated =arr[i]
+            result = arr.index(repeated)+1
+        seen.append(arr[i])
+    return result
+
+#Return the first non-repeating
+str = "a"
+def nonRepeatingChar(s):
+    # result=-1
+    seen = set()
+    if len(s)==1:
+        return s
+    for i in range(len(s)-1):
+        if s[i] not in s[i+1:] and s[i] not in seen:
+            return s[i]
+        seen.add(s[i])
+    return '$'
+
+str = "aa"
+def first_non_repeating_char(s):
+    d = {}
+    for i in s:
+        d[i] = d.get(i,0)+1
+    for i in d:
+        if d[i]==1:
+            return i
+    return -1
+
+
+# def non_repeating_char(s):
+#     for i in s:
+#         if s.count(i)==1:
+#             return i
+#     return -1
+
+print(first_non_repeating_char(str))
+
+
+
+
 
 
 
