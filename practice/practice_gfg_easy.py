@@ -1,4 +1,5 @@
 import math
+from collections import Counter
 
 from sqlalchemy.sql.functions import count
 
@@ -156,14 +157,13 @@ def first_non_repeating_char(s):
     return -1
 
 
-# def non_repeating_char(s):
-#     for i in s:
-#         if s.count(i)==1:
-#             return i
-#     return -1
-
-print(first_non_repeating_char(str))
-
+# a = [1,1,1,1,2,2,2,2,3,3,3,3]
+a ='aabbnnhhbbhhaamm'
+b =Counter(a)
+# b={}
+# for i in a:
+#     b[i] = b.get(i,0)+1
+print(b.most_common(3))
 
 
 

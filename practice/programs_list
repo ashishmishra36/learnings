@@ -2,15 +2,15 @@
 
 1. Longest Substring Without Repeating Characters  
 2. Trapping Rain Water  
-3. Container With Most Water *(added)*  
+3. Container With Most Water
 4. Find Pythagorean Triplets  
 5. Subarray with Given Sum  
-6. Reverse a String / Number  
-7. Reverse Words in a Sentence  
+6. Reverse a String / Number  - 'done'
+7. Reverse Words in a Sentence
 8. Reverse Array in Groups  
 9. Longest Palindrome in a String  
 10. Longest Distinct Characters in a String  
-11. Minimum Size Subarray Sum *(added)*  
+11. Minimum Size Subarray Sum
 12. Remove Duplicates (from string/array using 2-pointer)
 
 
@@ -121,4 +121,10 @@
 4. Activity Selection Problem *(added)*
 
 ---
-
+Searching (Sorted Data)			Binary Search
+Finding Subarrays/Substrings		Sliding Window
+Two Numbers / Pairing Problem		Two Pointers / Hashing
+Optimizing Recursive Calls		Dynamic Programming
+Grid / Network Problems			BFS / DFS
+Generating Combinations			Backtracking
+Sorting Data				QuickSort / MergeSort
