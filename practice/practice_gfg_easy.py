@@ -1,7 +1,9 @@
 import math
 from collections import Counter
-
+from ntpath import split
+import shutil
 from sqlalchemy.sql.functions import count
+import datetime
 
 # Function to check if given number n is a power of two.
 # def isPowerofTwo(n):
@@ -32,6 +34,7 @@ from sqlalchemy.sql.functions import count
 # and arr[i] + arr[j] == 0.
 #Note: The pairs must be returned in sorted order, the solution array should also be sorted, and the
 # answer must not contain any duplicate pairs.
+import os
 arr = [-1, 0, 1, 2, -1, -4]
 
 def getPairs( arr):
@@ -156,14 +159,39 @@ def first_non_repeating_char(s):
             return i
     return -1
 
-
 # a = [1,1,1,1,2,2,2,2,3,3,3,3]
 a ='aabbnnhhbbhhaamm'
 b =Counter(a)
 # b={}
 # for i in a:
 #     b[i] = b.get(i,0)+1
-print(b.most_common(3))
+# print(b.most_common(3))
+
+# shutil and OS module : move file between directories
+print(os.getcwd())
+print(os.listdir())
+with open('modules.txt','a+') as f:
+    f.write('this if fos os and shutil module \n \t')
+
+# for x in os.listdir():
+#     if not x.startswith('practice'):
+#         shutil.move(x,'gfg')
+
+print(datetime.datetime.now())
+print(datetime.date.today())
+print(datetime.time.min)
+print(datetime.time(2,20))
+print(datetime.date(2024,4,30))
+print(datetime.date(2024,4,30)-datetime.date(2000,4,30))
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,6 +1,6 @@
-# BInary search on sorted array
+# Binary search on sorted array
 # time complexity is O(log n)
-a = [1,9,9,19,4,5,7]
+a = [1,9,9,19,4,5,7, 0,1,3]
 def binary_search(a, target):
     # left : start of array / right = end of the array
     left, right = 0 , len(a)-1
@@ -75,5 +75,5 @@ def merge(sorted_left,sorted_right):
     print(f'After merging results is : {result}')
     return result
 
-print(merge_sort(a))
+print(quick_sort(a))
 
