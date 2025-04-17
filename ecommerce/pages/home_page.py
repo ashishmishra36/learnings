@@ -18,6 +18,7 @@ class HomePage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
         self.driver.get(TestData.BASE_URL)
+        self.logger.info('Application is launched !')
 
 
     def get_home_page_title(self, title):
@@ -31,11 +32,13 @@ class HomePage(BasePage):
     def click_to_register(self):
         self.do_click(self.MY_ACCOUNT)
         self.do_click(self.REGISTER)
+        self.logger.info('User clicked on Register button under Account dropdown')
         return RegisterPage(self.driver)
 
     def click_to_login(self):
         self.do_click(self.MY_ACCOUNT)
         self.do_click(self.REGISTER)
+        self.logger.info('User clicked on login button under Account dropdown')
         return LoginPage(self.driver)
 
 

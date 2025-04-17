@@ -1,6 +1,7 @@
 from configs.config import TestData
 from pages.home_page import HomePage
 from tests.test_base import BaseTest
+from utils import logger
 
 
 class TestHomePage(BaseTest):
@@ -9,10 +10,12 @@ class TestHomePage(BaseTest):
     #     self.homePage = HomePage(self.driver)  # Initialize here
 
 
-    def test_page_title(self):
+    def test_home_page_title(self):
         self.homePage = HomePage(self.driver)
-        title = self.homePage.get_login_page_title(TestData.HOME_PAGE_TITLE)
+        title = self.homePage.get_home_page_title(TestData.HOME_PAGE_TITLE)
         assert title == TestData.HOME_PAGE_TITLE
+        # self.logger.info('title of home page is verified ')
+
 
     def test_image(self):
         self.homePage = HomePage(self.driver)

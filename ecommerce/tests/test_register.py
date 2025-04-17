@@ -1,7 +1,6 @@
 from configs.config import TestData
 from pages.home_page import HomePage
 from tests.test_base import BaseTest
-from utils.util_excel import get_registration_data
 
 
 

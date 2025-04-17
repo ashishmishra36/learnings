@@ -42,7 +42,7 @@ class RegisterPage(BasePage):
                     self.do_click(field_locators[field])
                 if field == 'confirm_password':
                     self.do_send_keys(field_locators[field], form_dict['password'])
-        print(f'inside: submitted registration info')
+        self.logger.info(f'user submitted registration info')
         return SuccessRegistration(self.driver)
 
 

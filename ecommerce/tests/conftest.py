@@ -2,10 +2,16 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.firefox.options import Options
+from utils.logger import generate_logger
+
+# @pytest.fixture(scope="session")
+# def logger():
+#     return generate_logger('test_logs')
 
 
 @pytest.fixture(params=['chrome'], scope='class')
 def init_driver(request):
+    print(f'Test name is : {request.node.name}')
     web_driver= None
     if request.param== 'chrome':
         print('----------------------------Setting up----------------------------')
@@ -16,13 +22,14 @@ def init_driver(request):
         # web_driver = webdriver.Chrome(options=chrome_options)
         web_driver = webdriver.Chrome()
     if request.param=='firefox':
-        firefox_options = Options()
-        firefox_options.add_argument("--headless")
-        web_driver = webdriver.Firefox(options=firefox_options)
-        # web_driver = webdriver.Firefox()
+        # firefox_options = Options()
+        # firefox_options.add_argument("--headless")
+        # web_driver = webdriver.Firefox(options=firefox_options)
+        web_driver = webdriver.Firefox()
     request.cls.driver = web_driver
-    print(f'test name is : {request.node.name}')
-
     yield
     print('----------------------------tearing down----------------------------')
     web_driver.quit()
+
+
+

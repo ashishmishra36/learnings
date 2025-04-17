@@ -10,4 +10,7 @@ class TestData:
     REGISTER_PAGE_TITLE ='Register Account'
     LOGIN_PAGE_TITLE = 'Register Account'
     SUCCESS_REGISTRATION = 'Your Account Has Been Created!'
+    EXCEL_SHEET_PATH ='C:/Users/AshishMishra/my_data/my_learning/codebase/learnings/ecommerce/configs/data.xlsx'
+    SHEET_NAME = 'registration'
+    LOG_FILE_PATH = 'C:/Users/AshishMishra/my_data/my_learning/codebase/learnings/ecommerce/logs/'
 
