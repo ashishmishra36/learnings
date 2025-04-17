@@ -1,6 +1,8 @@
 from configs.config import TestData
 from pages.home_page import HomePage
 from tests.test_base import BaseTest
+from utils.util_excel import get_registration_data
+
 
 
 class TestRegister(BaseTest):
@@ -12,10 +14,9 @@ class TestRegister(BaseTest):
         print('under the register page')
         assert title == TestData.REGISTER_PAGE_TITLE
 
-    def submit_register_page(self):
-        self.homePage = HomePage(self.driver)
-
-        register_page = self.homePage.click_to_register()
-        register_page.fill_register_form()
+    # def test_submit_register_page(self):
+    #     self.homePage = HomePage(self.driver)
+    #     register_page = self.homePage.click_to_register()
+    #     register_page.submit_register_form()
 
 

@@ -9,4 +9,5 @@ class TestData:
     REGISTER_PAGE_URL= 'https://naveenautomationlabs.com/opencart/index.php?route=account/register'
     REGISTER_PAGE_TITLE ='Register Account'
     LOGIN_PAGE_TITLE = 'Register Account'
+    SUCCESS_REGISTRATION = 'Your Account Has Been Created!'
 

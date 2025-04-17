@@ -1,5 +1,9 @@
+import time
+
 from pages.base_page import BasePage
 from selenium.webdriver.common.by import By
+
+from pages.success_registration import SuccessRegistration
 
 
 class RegisterPage(BasePage):
@@ -9,34 +13,36 @@ class RegisterPage(BasePage):
     EMAIL = (By.ID, 'input-email')
     PHONE = (By.ID, 'input-telephone')
     PASSWORD = (By.ID, 'input-password')
-    CONFIRM_PASSWORD = (By.ID, 'input-confirm')
+    CONFIRM_PASSWORD = (By.XPATH, "//*[@name='confirm' and @id ='input-confirm']")
     SUBSCRIBE = (By.XPATH, "//*[@name='newsletter' and @value=0]")
     POLICY = (By.XPATH, "//*[@name='agree' and @value=1]")
-    CONTINUE = (By.CLASS_NAME, 'btn btn-primary')
+    CONTINUE = (By.XPATH, "//*[@type='submit']")
 
 
     def get_register_page_title(self, title):
         return self.get_page_title(title)
 
-    def fill_register_form(self, form_dict):
+    def submit_register_form(self, form_dict):
         field_locators= {
             'first_name' : self.FIRSTNAME,
             'last_name': self.LASTNAME,
             'email': self.EMAIL,
             'phone': self.PHONE,
             'password': self.PASSWORD,
-            'confirm_password': self.CONFIRM_PASSWORD,'subscribe': self.SUBSCRIBE, 'policy':self.POLICY,
+            'confirm_password': self.CONFIRM_PASSWORD,
+            'subscribe': self.SUBSCRIBE,
+            'policy':self.POLICY,
             'continue':self.CONTINUE
         }
-        for field, value in form_dict:
-            if field in field_locators:
-                if field == 'subscribe':
+        for field, value in field_locators.items():
+            if field in form_dict:
+                self.do_send_keys(field_locators[field], form_dict[field])
+            else:
+                if field in ['subscribe', 'policy','continue'] :
                     self.do_click(field_locators[field])
-                if field == 'policy':
-                    self.do_click(field_locators[field])
-                if field == 'continue':
-                    self.do_click(field_locators[field])
-                else:
-                    self.do_send_keys(field_locators,value)
+                if field == 'confirm_password':
+                    self.do_send_keys(field_locators[field], form_dict['password'])
+        print(f'inside: submitted registration info')
+        return SuccessRegistration(self.driver)
 
 

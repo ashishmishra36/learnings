@@ -1,18 +1,10 @@
-def first_repeating_element(arr):
-    seen = set()
-    first_index = -1
+arr = [4,7,8,1,2,4,1,0,9,1]
+n =2
+def highest(arr, n):
+    # convert it to set, check id set has length> n if yes , make it sorted and find nth
+    s = sorted(set(arr))
+    print(s[-n])
 
-    for i in range(len(arr) - 1, -1, -1):
-        if arr[i] in seen:
-            first_index = i
-        else:
-            seen.add(arr[i])
-    print(seen)
-    if first_index == -1:
-        return -1  # No repeating element found
-    else:
-        return first_index + 1  # Convert to 1-based indexing
+highest(arr, n)
 
-# Example usage:
-arr = [10, 5, 3, 4, 3, 5, 6]
-print(first_repeating_element(arr))
+

@@ -14,16 +14,17 @@ class BasePage:
 
 
     def get_page_title(self, title):
-        WebDriverWait(self.driver, 10).until(EC.title_is(title))
+        WebDriverWait(self.driver, 20).until(EC.title_is(title))
         return self.driver.title
 
     def get_page_image(self, by_locator):
         return WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(by_locator)).is_displayed()
 
     def do_click(self, by_locator):
-        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(by_locator)).click()
+        WebDriverWait(self.driver, 15).until(EC.visibility_of_element_located(by_locator)).click()
 
     def do_send_keys(self, by_locator, text):
+        print(f'locator is : {by_locator}  and value to be enter is :{text}')
         WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(by_locator)).send_keys(text)
 
 
