@@ -1,7 +1,7 @@
 # learnings
 Purpose: While brushing up python/automation, I thought of adding all my code to git , so it's better to manage  
 
-Below are the steps I followed to set-up Python in my local-
+Below are the steps I followed to set up Python in my local-
 1. Download Python in some /software folder
 2. install Python
 3. Add path to the environment variable 

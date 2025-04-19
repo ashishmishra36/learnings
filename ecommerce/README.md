@@ -23,10 +23,11 @@ generates an **HTML report** after test execution.
 ---
 
 ## Instruction
-
 1. git clone https://github.com/ashishmishra36/learnings.git
 2. pip install -r requirements.txt
 3. cd ecommerce/tests pytest -v -s --html=reports/report.html
+4. cd ecommerce/tests && pytest --alluredir allure-results --clean-alluredir
+5. allure serve reports/results_04182025_01
 
 
 ## Tools
@@ -37,6 +38,8 @@ generates an **HTML report** after test execution.
 5. Page Object Model - design pattern
 6. pytest-xdist - To run pytest in parallel mode
 7. Allure pytest - For Detailed reporting
+8. logger - for logging 
+9. openpyxl - to interact with Excel sheet 
 
 
 ## Ci/CD Architecture:

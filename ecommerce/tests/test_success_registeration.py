@@ -11,7 +11,7 @@ class TestSuccessRegistration(BaseTest):
         register_page = self.homePage.click_to_register()
         registration_data = fetch_registration_data(TestData.EXCEL_SHEET_PATH, TestData.SHEET_NAME)
         register = register_page.submit_register_form(registration_data)
-        logger.info(f'registration page submitted successfully ')
+        print(f'registration page submitted successfully ')
         if register:
             print('under the SUCCESS_REGISTRATION register page')
             title= register.get_success_register_page_title(TestData.SUCCESS_REGISTRATION)
