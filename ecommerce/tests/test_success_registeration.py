@@ -2,10 +2,13 @@ from configs.config import TestData
 from pages.home_page import HomePage
 from tests.test_base import BaseTest
 from utils.util_excel import fetch_registration_data, update_row_in_sheet
+import allure
 
 
 class TestSuccessRegistration(BaseTest):
 
+    @allure.description("This test verifies if user is able to register successfully and landed on success page")
+    @allure.severity(allure.severity_level.CRITICAL)
     def test_success_registration_title(self):
         self.homePage = HomePage(self.driver)
         register_page = self.homePage.click_to_register()

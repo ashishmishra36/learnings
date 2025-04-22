@@ -12,8 +12,8 @@ CMD ["python", "app.py"]
 
 
 #Build the Docker image
-docker build -t hello-docker .
+#docker build -t hello-docker .
 #Run the Docker container
-docker run hello-docker
+#docker run hello-docker
 
 

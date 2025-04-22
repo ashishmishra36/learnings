@@ -26,7 +26,7 @@ generates an **HTML report** after test execution.
 1. git clone https://github.com/ashishmishra36/learnings.git
 2. pip install -r requirements.txt
 3. cd ecommerce/tests pytest -v -s --html=reports/report.html
-4. cd ecommerce/tests && pytest --alluredir allure-results --clean-alluredir
+4. cd ecommerce/tests && pytest --alluredir reports/results_04182025_01 --clean-reports/results_04182025_01
 5. allure serve reports/results_04182025_01
 
 
