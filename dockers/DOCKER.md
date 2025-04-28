@@ -1,6 +1,12 @@
-## Steps 
-1. install docker on local mac
-2. write some docker files and build some images
-3. Run and manages those images 
-4. ship those images to the cloud 
-5. 
+## Phase    | What Happens
+Write       | Define instructions in a Dockerfile
+Build       | Convert to image using docker build
+Store       | Save locally or push to a registry
+Run         | Create containers from the image
+Update      | Modify Dockerfile and rebuild
+Clean Up    | Remove unused containers/images/layers
+
+
+Dockerfile ➜ docker build ➜ Docker Image ➜ docker run ➜ Container Running Your Python App
+           ↘ update & rebuild ↘
+           🔁 iteration cycle

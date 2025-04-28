@@ -38,3 +38,18 @@ print('--------# ends with a number--------------')
 q = 'what is the 125465'
 n= re.findall(r'\d$', q)
 print(n)
+
+
+print('----------------to exclude number from a string-----------------------------')
+phrase = 'there are 5 numbers in 12345 but a a digit 8.'
+n = re.findall(r'[^\d]+', phrase)
+print(n)
+
+
+print('----------------to exclude "-" ish words from a string-----------------------------')
+phrase = 'I want to follow-up to dig-up about that set-up'
+# pattern = r'[\w]'                # it will give all the alphanumerics
+# pattern = r'[\w]+-'            # it will return one or more alphanumerics followed by -
+pattern = r'[\w]+-[\w]+'       # it will return one or more alphanumerics followed by - and starts with -
+n = re.findall(pattern, phrase)
+print(n)
