@@ -1,11 +1,7 @@
 # E-Commerce Application Testing using Page Object Model with PyTest
 
-This project is an automated test suite for an E-Commerce web application using the **Page Object Model (POM)** design pattern and **PyTest** framework. 
-It covers key user flows such as 
-**launching the application**, 
-**user registration**, 
-**login**, and 
-generates an **HTML report** after test execution.
+This project is an automated test suite for an E-Commerce web application perform functional test cases mentioned in testcase.md
+
 
 ---
 
@@ -17,7 +13,7 @@ generates an **HTML report** after test execution.
   - Launching the E-Commerce application
   - User Registration
   - User Login
-- Generates a detailed HTML test report
+- Generates a detailed HTML test report and allure report
 - Easy to configure and extend
 
 ---

@@ -7,7 +7,7 @@ import allure
 
 class TestRegister(BaseTest):
 
-    @allure.description("This test verifies the title of the register page")
+    @allure.description("Verify the title of the register page is as expected")
     @allure.severity(allure.severity_level.CRITICAL)
     def test_register_page_title(self):
         self.homePage = HomePage(self.driver)

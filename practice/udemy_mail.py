@@ -1,7 +1,8 @@
 import smtplib
 import getpass
+import imaplib
 
-# password: bthf rfoo efqn fgyr
+# gmail app password: bthf rfoo efqn fgyr
 # this file has set up to send an email from gmail account, for best results this file needs to be run from terminal
 
 # first, create smtp object
@@ -32,3 +33,7 @@ smtp_object.sendmail(email,email,msg)
 
 # quit the object and close the connection
 smtp_object.quit()
+
+m = imaplib.IMAP4_SSL('imap.gmail.com')
+m.login(email,password)
+print(m.list())

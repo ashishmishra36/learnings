@@ -76,19 +76,25 @@ print(arraySortedOrNot(arr))
 
 # print(evenlyDivides(n))
 
-#input = ABCDEFGHIJKLIMNOQRSTUVWXYZ
-output
-ABCD
-EFGH
-IJKL
-IMNO
-QRST
-UVWX
-YZ
-return textwrap.fill(s,w)
+# #input = ABCDEFGHIJKLIMNOQRSTUVWXYZ
+# output
+# ABCD
+# EFGH
+# IJKL
+# IMNO
+# QRST
+# UVWX
+# YZ
+# return textwrap.fill(s,w)
 
 # to print value having 2 decimal points
-print(format(a,'.2f'))
+# print(format(a,'.2f'))
+
+
+x = input('enter a string : ')
+
+y = list(map(int, x.split()))
+print(y)
 
 
 

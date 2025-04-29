@@ -6,7 +6,7 @@ import allure
 
 class TestLogin(BaseTest):
 
-    @allure.description("This test verifies the title of the login page")
+    @allure.description("Verify the title of the login page is as expected")
     @allure.severity(allure.severity_level.CRITICAL)
     def test_login_page_title(self):
         self.homePage = HomePage(self.driver)
