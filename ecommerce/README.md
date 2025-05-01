@@ -22,8 +22,8 @@ This project is an automated test suite for an E-Commerce web application perfor
 1. git clone https://github.com/ashishmishra36/learnings.git
 2. pip install -r requirements.txt
 3. cd ecommerce/tests pytest -v -s --html=reports/report.html
-4. cd ecommerce/tests && pytest --alluredir reports/results_04182025_01 --clean-reports/results_04182025_01
-5. allure serve reports/results_04182025_01
+4. cd ecommerce/tests && pytest --alluredir reports/results_04292025_01 --clean-reports/results_04292025_01
+5. allure serve reports/results_04292025_01
 
 
 ## Tools
@@ -47,3 +47,8 @@ GitHub Repo  ──(push)──► Jenkins Webhook Trigger (in Docker)
 
 
 
+## Xpath 
+1. //tag[contains(@attribute, 'value')]      ---> 
+2. //tag[contains(text(), 'partial text')]   --->
+3. //tag[starts-with(@attribute, 'prefix')]  --->
+4. //*[contains(@id, 'product')]             --->

@@ -20,7 +20,7 @@ for item in image:
         print(item.attrs['src'])
         # get the image link
         photo = requests.get('https:' + item.attrs['src'])
-        print(type(photo))
+        # print(type(photo))
         # we need to take mode as wb , because we will be writing in binary data into the file
         f = open('apj.jpg', 'wb')
         f.write(photo.content)

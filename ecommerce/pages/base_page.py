@@ -33,4 +33,10 @@ class BasePage:
         self.logger.info(f'locator is : {by_locator}  and value to be enter is :{text}')
         WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(by_locator)).send_keys(text)
 
+    def get_text_of_element(self, by_locator):
+        self.logger.info(f'fetching text of the element locator is : {by_locator}')
+        element =  WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(by_locator))
+        self.logger.info(f'text of the element is : {element.text}')
+        return element.text
+
 

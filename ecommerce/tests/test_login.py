@@ -11,6 +11,6 @@ class TestLogin(BaseTest):
     def test_login_page_title(self):
         self.homePage = HomePage(self.driver)
         login_page = self.homePage.click_to_login()
-        title= login_page.get_login_page_title(TestData.LOGIN_PAGE_TITLE)
+        title = login_page.get_login_page_title(TestData.LOGIN_PAGE_TITLE)
         print('under the login page')
-        assert title == TestData.LOGIN_PAGE_TITLE
+        assert title == TestData.LOGIN_PAGE_TITLE , 'Error! Login page title is not matching'

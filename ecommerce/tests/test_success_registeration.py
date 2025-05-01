@@ -1,3 +1,4 @@
+import pytest
 from configs.config import TestData
 from pages.home_page import HomePage
 from tests.test_base import BaseTest
@@ -9,6 +10,7 @@ class TestSuccessRegistration(BaseTest):
 
     @allure.description("Verify that user is able to register successfully and lands on success page")
     @allure.severity(allure.severity_level.CRITICAL)
+    @pytest.mark.mac
     def test_success_registration_title(self):
         self.homePage = HomePage(self.driver)
         register_page = self.homePage.click_to_register()
@@ -20,5 +22,6 @@ class TestSuccessRegistration(BaseTest):
             title= register.get_success_register_page_title(TestData.SUCCESS_REGISTRATION)
             assert title == TestData.SUCCESS_REGISTRATION
             update_row_in_sheet(TestData.EXCEL_SHEET_PATH, TestData.SHEET_NAME, registration_data)
+            print(registration_data)
         else:
             assert False, 'Failed to fill registration form! '
