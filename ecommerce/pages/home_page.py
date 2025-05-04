@@ -16,6 +16,9 @@ class HomePage(BasePage):
     BTN_CART = (By.XPATH, '//*[@id="cart"]/button[1]')
     CART_CHK_EMPTY = (By.XPATH, '//*[@id="cart"]/ul/li/p')
     CART_TOTAL = (By.XPATH,'//*[@id="cart-total"]')
+    CAROUSEL = (By.XPATH, "//img[contains(@src,'130x100.png') and contains(@class,'img-responsive')]")
+    # CAROUSEL = (By.CSS_SELECTOR, ".swiper-wrapper img")
+
 
 # super keyword : it will call the parent class constructor, with help of this driver we can invoke generic method
 # created in the BasePage
@@ -53,6 +56,11 @@ class HomePage(BasePage):
         self.do_click(self.ADD_MACBOOK)
         self.logger.info('User added one item')
         return self.get_text_of_element(self.CART_TOTAL)
+
+    def get_items_in_carousel(self):
+        l= self.get_list_of_elements(self.CAROUSEL)
+        return set([x.get_attribute('alt') for x in l])
+
 
 
 

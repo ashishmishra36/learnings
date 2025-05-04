@@ -39,4 +39,9 @@ class BasePage:
         self.logger.info(f'text of the element is : {element.text}')
         return element.text
 
+    def get_list_of_elements(self, by_locator):
+        self.logger.info(f'fetching list of the element for locator : {by_locator}')
+        return WebDriverWait(self.driver, 10).until(EC.presence_of_all_elements_located(by_locator))
+
+
 
