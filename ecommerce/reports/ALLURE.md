@@ -1,4 +1,4 @@
-## steps to install Allure reporting - Windows 
+ ## steps to install Allure reporting - Windows 
 
 1. open https://scoop.sh/ in browser and powershell in windows run below command - "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser"
 Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression 

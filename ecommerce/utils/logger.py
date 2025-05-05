@@ -1,4 +1,5 @@
 import logging
+import os.path
 from datetime import datetime
 
 from configs.config import TestData
@@ -9,7 +10,9 @@ def generate_logger(name):
     if not logger.handlers:
         logger.setLevel(logging.INFO)
         log_file_name = datetime.now().strftime('%d%m%Y%H%M%S')
-        file_handler = logging.FileHandler(TestData.LOG_FILE_PATH+log_file_name+'.log', mode='a')
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        log_file_path = os.path.join(base_dir, '..', 'logs')
+        file_handler = logging.FileHandler(log_file_path+log_file_name+'.log', mode='a')
         # define a format for logging
         formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
         file_handler.setFormatter(formatter)

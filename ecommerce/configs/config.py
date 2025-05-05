@@ -11,7 +11,7 @@ class TestData:
     LOGIN_PAGE_TITLE = 'Account Login'
     ACCOUNT_PAGE_TITLE = 'My Account'
     SUCCESS_REGISTRATION = 'Your Account Has Been Created!'
-    EXCEL_SHEET_PATH ='C:/Users/AshishMishra/my_data/my_learning/codebase/learnings/ecommerce/configs/data.xlsx'
+    EXCEL_SHEET ='data.xlsx'
     SHEET_NAME = 'registration'
     LOG_FILE_PATH = 'C:/Users/AshishMishra/my_data/my_learning/codebase/learnings/ecommerce/logs/'
     TEXT_EMPTY_CART = '0 item(s) - $0.00'

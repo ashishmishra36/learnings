@@ -71,4 +71,14 @@ def find_phone_numer():
     print(p)
 
 
-find_phone_numer()
+def file_data():
+    base_dir = os.path.abspath(__file__)
+    f = os.path.dirname(__file__)
+    print(base_dir)
+    test = os.path.join(f,'gfg/modules.txt')
+    my_file = open(test)
+    content = my_file.read()
+    print(content)
+
+
+file_data()

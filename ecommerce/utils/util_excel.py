@@ -1,3 +1,5 @@
+import os.path
+
 import openpyxl
 
 """
@@ -5,7 +7,9 @@ This method takes file name and sheet name as arguments , read the given sheet.
 If the flag=Y in any of the row then fetch it 
 return: a dictionary with headers as key and cell values as values 
 """
-def fetch_registration_data(file_path, sheet_name):
+def fetch_registration_data(file_name, sheet_name):
+    # Get absolute path to the directory where this script is located
+    file_path = get_file_path(file_name)
     workbook = openpyxl.load_workbook(file_path)
     sheet = workbook[sheet_name]
     header= [cell.value for cell in sheet[1]]
@@ -24,8 +28,9 @@ This method takes file name, sheet name, row_dict as arguments , read the given 
 update the flag=N for the given row
 return: true if updated 
 """
-def update_row_in_sheet(file_path, sheet_name, row_dict):
+def update_row_in_sheet(file_name, sheet_name, row_dict):
     try:
+        file_path =get_file_path(file_name)
         workbook = openpyxl.load_workbook(file_path)
         sheet = workbook[sheet_name]
         header = [cell.value for cell in sheet[1]]
@@ -40,3 +45,10 @@ def update_row_in_sheet(file_path, sheet_name, row_dict):
         return False
     except Exception as p:
         raise RuntimeError(f'unable to update column flag! : {p}')
+
+
+def get_file_path(file_name):
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    print(base_dir)
+    # Navigate to config directory from current folder
+    return os.path.join(base_dir, '..', 'configs', file_name)
