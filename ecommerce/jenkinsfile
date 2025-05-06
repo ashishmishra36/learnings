@@ -5,15 +5,12 @@ pipeline {
     booleanParam(name: 'CLEANUP_AFTER', defaultValue: true, description: 'Clean up after job?')
   }
 
-  environment {
-    AWS_REGION = 'us-east-1' // or your preferred region
-    S3_BUCKET = 'your-bucket-name'
-  }
-
   stages {
     stage('Clone Repo') {
       steps {
-        git credentialsId: 'github-pat', url: 'https://github.com/your-username/your-repo.git'
+        git branch: 'feature_1.0.0.0',
+            credentialsId: 'ashishmish36',
+            url: 'https://github.com/ashishmishra36/learnings.git'
       }
     }
 
@@ -21,56 +18,25 @@ pipeline {
       steps {
         sh '''
           echo "Installing dependencies..."
-          pip install -r requirements.txt || true
+          pip install -r requirements.txt
 
           echo "Running tests..."
-          pytest --junitxml=report.xml || true
+          pytest ecommerce/tests --html=reports/report.html
         '''
       }
     }
-
-    stage('Upload Report') {
-      steps {
-        script {
-          def timestamp = sh(returnStdout: true, script: 'date +%s').trim()
-          def filename = "report-${timestamp}.html"
-
-          sh """
-            cp report.html $filename
-            aws s3 cp $filename s3://your-bucket/reports/ --acl public-read
-            echo "View at: https://your-bucket.s3.amazonaws.com/reports/$filename"
-          """
-        }
-      }
-    }
+  }
 
   post {
     always {
-      echo "Job completed. Starting cleanup..."
+      archiveArtifacts artifacts: 'reports/*.html', fingerprint: true
 
       script {
         if (params.CLEANUP_AFTER) {
-          sh '''
-            echo "Cleaning workspace..."
-            rm -rf *
-
-            echo "Pruning Docker containers..."
-            docker container prune -f
-
-            echo "Removing temp files..."
-            rm -rf /tmp/*jenkins*
-
-            # Uncomment if you want to remove files from S3
-            # echo "Removing files from S3..."
-            # aws s3 rm s3://$S3_BUCKET/temp-dir/ --recursive
-
-            # WARNING: Uncommenting below will terminate your EC2 instance
-            # echo "Terminating EC2 instance..."
-            # INSTANCE_ID=$(curl http://169.254.169.254/latest/meta-data/instance-id)
-            # aws ec2 terminate-instances --instance-ids $INSTANCE_ID --region $AWS_REGION
-          '''
+          echo 'Cleaning up workspace...'
+          cleanWs()
         } else {
-          echo "Cleanup skipped as per configuration."
+          echo 'Skipping cleanup as per parameter.'
         }
       }
     }

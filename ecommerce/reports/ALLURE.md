@@ -7,3 +7,7 @@ Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 4. Run command : scoop install allure and check version allure --version
 5. go to the test directory and run command: pytest --alluredir reports/results_04182025_01 --clean-reports/results_04292025_01
 6. generate allure report : allure serve reports/results_04292025_01
+
+
+## steps to install allure in mac
+1. 
