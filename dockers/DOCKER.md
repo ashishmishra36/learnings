@@ -20,6 +20,20 @@ docker system prune
   -v jenkins_home:/var/jenkins_home \
   -v ~/.ssh:/var/jenkins_home/.ssh \
   jenkins/jenkins:lts
+
+to run jenkins with access to docker -
+docker run -d \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v jenkins_home:/var/jenkins_home \
+  -p 8080:8080 \
+  --name jenkins \
+  jenkins/jenkins:lts
+
+docker exec -it -u 0 1a1c7beb97ec /bin/bash
+apt update && apt install -y docker.io
+usermod -aG docker jenkins
+
+
 docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 
 2. to go into the docker container docker exec -it -u 0 1a1c7beb97ec /bin/bash
