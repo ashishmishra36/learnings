@@ -10,13 +10,14 @@ pipeline {
 
          stage('Run') {
             steps {
-            dir('learnings'){
+            
                     sh '''
                       echo "Setting up Python venv..."
                       python3 -m venv venv
                       . venv/bin/activate
 
                       echo "Installing dependencies..."
+                      pwd
                       pip3 install -r requirements.txt
 
                       echo "Running tests..."
