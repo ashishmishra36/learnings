@@ -14,18 +14,19 @@ pipeline {
         }
          stage('Run') {
             steps {
-            sh '''
+            dir('learnings'){
+                    sh '''
+                      echo "Setting up Python venv..."
+                      python3 -m venv venv
+                      . venv/bin/activate
 
-                  echo "Setting up Python venv..."
-                  python3 -m venv venv
-                  . venv/bin/activate
+                      echo "Installing dependencies..."
+                      pip3 install -r requirements.txt
 
-                  echo "Installing dependencies..."
-                  pip3 install -r requirements.txt
-
-                  echo "Running tests..."
-                  pytest ecommerce/tests --html=reports/report.html
-                '''
+                      echo "Running tests..."
+                      ./venv/bin/pytest ecommerce/tests --html=reports/report.html
+                    '''
+                }
             }
      }
   }
