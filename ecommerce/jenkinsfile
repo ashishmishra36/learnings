@@ -10,7 +10,7 @@ pipeline {
 
          stage('Run') {
             steps {
-            
+
                     sh '''
                       echo "Setting up Python venv..."
                       python3 -m venv venv
@@ -23,8 +23,7 @@ pipeline {
                       echo "Running tests..."
                       ./venv/bin/pytest ecommerce/tests --html=reports/report.html
                     '''
-                }
             }
-     }
+         }
   }
 }
