@@ -1,19 +1,6 @@
-# Use the official Python base image
-FROM python:3.13
+FROM jenkins/jenkins:lts
 
-# Set the working directory
-WORKDIR /app
+USER root
+RUN apt-get update && apt-get install -y python3 python3-pip
 
-# Copy the Python script into the container
-COPY app.py .
-
-# Run the Python script
-CMD ["python", "app.py"]
-
-
-#Build the Docker image
-#docker build -t hello-docker .
-#Run the Docker container
-#docker run hello-docker
-
-
+USER jenkins

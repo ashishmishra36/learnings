@@ -1,9 +1,5 @@
 pipeline {
-  agent {
-        docker {
-            image 'python:3.13' // or any suitable Python image
-        }
-  }
+  agent any
 
   parameters {
     booleanParam(name: 'CLEANUP_AFTER', defaultValue: true, description: 'Clean up after job?')
@@ -17,7 +13,7 @@ pipeline {
                 sh 'pip install -r requirements.txt'
             }
         }
-        
+
     stage('Clone Repo') {
       steps {
         sh "git clone https://github.com/ashishmishra36/learnings.git"
