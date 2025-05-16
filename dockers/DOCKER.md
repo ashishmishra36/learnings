@@ -32,6 +32,9 @@ docker run -d \
 docker exec -it -u 0 1a1c7beb97ec /bin/bash
 apt update && apt install -y docker.io
 usermod -aG docker jenkins
+sudo chown root:docker /var/run/docker.sock
+sudo chmod 664 /var/run/docker.sock
+
 exit 
 docker restart jenkins
 
