@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  docker {
+            image 'python:3.13' // or any suitable Python image
+        }
 
   parameters {
     booleanParam(name: 'CLEANUP_AFTER', defaultValue: true, description: 'Clean up after job?')
