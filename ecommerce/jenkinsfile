@@ -9,27 +9,20 @@ pipeline {
      stage('Run') {
             steps {
             sh '''
-                  echo "Installing dependencies..."
+                  echo "Cloning repo..."
+                  git clone https://github.com/ashishmishra36/learnings.git
+
+                  echo "Setting up Python venv..."
                   python3 -m venv venv
                   . venv/bin/activate
+
+                  echo "Installing dependencies..."
                   pip3 install -r requirements.txt
+
+                  echo "Running tests..."
+                  pytest ecommerce/tests --html=reports/report.html
                 '''
             }
         }
-
-    stage('Clone Repo') {
-      steps {
-        sh "git clone https://github.com/ashishmishra36/learnings.git"
-      }
-    }
-
-    stage('Install & Build') {
-      steps {
-        sh '''
-          echo "Running tests..."
-          pytest ecommerce/tests --html=reports/report.html
-        '''
-      }
-    }
   }
 }
