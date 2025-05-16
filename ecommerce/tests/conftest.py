@@ -20,7 +20,7 @@ def init_driver(request):
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
         web_driver = webdriver.Chrome(options=chrome_options)
-        web_driver = webdriver.Chrome()
+        # web_driver = webdriver.Chrome()
     if request.param=='firefox':
         # firefox_options = Options()
         # firefox_options.add_argument("--headless")
