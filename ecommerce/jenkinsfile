@@ -3,7 +3,7 @@ pipeline {
         docker {
             image 'python:3.13' // or any suitable Python image
         }
-    }
+  }
 
   parameters {
     booleanParam(name: 'CLEANUP_AFTER', defaultValue: true, description: 'Clean up after job?')
@@ -25,21 +25,6 @@ pipeline {
           echo "Running tests..."
           pytest ecommerce/tests --html=reports/report.html
         '''
-      }
-    }
-  }
-
-  post {
-    always {
-      archiveArtifacts artifacts: 'reports/*.html', fingerprint: true
-
-      script {
-        if (params.CLEANUP_AFTER) {
-          echo 'Cleaning up workspace...'
-          cleanWs()
-        } else {
-          echo 'Skipping cleanup as per parameter.'
-        }
       }
     }
   }
