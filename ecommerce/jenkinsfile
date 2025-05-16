@@ -8,9 +8,7 @@ pipeline {
   stages {
     stage('Clone Repo') {
       steps {
-        git branch: 'feature_1.0.0.0',
-            credentialsId: 'github-ssh-key',
-            url: 'git@github.com:ashishmishra36/learnings.git'
+        sh "git clone https://github.com/ashishmishra36/learnings.git"
       }
     }
 
