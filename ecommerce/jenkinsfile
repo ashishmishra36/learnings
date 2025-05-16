@@ -4,15 +4,15 @@ pipeline {
   parameters {
     booleanParam(name: 'CLEANUP_AFTER', defaultValue: true, description: 'Clean up after job?')
   }
-  stages {
-    stage('Prep Workspace') {
-      steps {
-        deleteDir()
-      }
-    }
+
 
   stages {
-     stage('Run') {
+        stage('Prep Workspace') {
+          steps {
+            deleteDir()
+          }
+        }
+         stage('Run') {
             steps {
             sh '''
                   echo "Cloning repo..."
