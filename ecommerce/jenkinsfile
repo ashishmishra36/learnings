@@ -15,8 +15,6 @@ pipeline {
          stage('Run') {
             steps {
             sh '''
-                  echo "Cloning repo..."
-                  git clone https://github.com/ashishmishra36/learnings.git
 
                   echo "Setting up Python venv..."
                   python3 -m venv venv
