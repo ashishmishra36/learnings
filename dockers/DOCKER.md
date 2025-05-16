@@ -21,3 +21,7 @@ docker system prune
   -v ~/.ssh:/var/jenkins_home/.ssh \
   jenkins/jenkins:lts
 docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+
+2. to go into the docker container docker exec -it -u 0 1a1c7beb97ec /bin/bash
+3. to get the updates inside the docker: apt-get update
+4. to install python inside the docker: apt-get install python3
