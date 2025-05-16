@@ -4,6 +4,12 @@ pipeline {
   parameters {
     booleanParam(name: 'CLEANUP_AFTER', defaultValue: true, description: 'Clean up after job?')
   }
+  stages {
+    stage('Prep Workspace') {
+      steps {
+        deleteDir()
+      }
+    }
 
   stages {
      stage('Run') {
@@ -23,6 +29,6 @@ pipeline {
                   pytest ecommerce/tests --html=reports/report.html
                 '''
             }
-        }
+     }
   }
 }
