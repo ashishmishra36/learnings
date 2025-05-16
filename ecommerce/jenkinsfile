@@ -1,9 +1,5 @@
 pipeline {
-  agent {
-        docker {
-             image 'selenium/standalone-chrome:latest'
-        }
-  }
+  agent any
 
   parameters {
     booleanParam(name: 'CLEANUP_AFTER', defaultValue: true, description: 'Clean up after job?')
