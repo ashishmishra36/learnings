@@ -10,6 +10,14 @@ pipeline {
   }
 
   stages {
+     stage('Run') {
+            steps {
+                echo "Installing dependencies..."
+                sh 'python --version'
+                sh 'pip install -r requirements.txt'
+            }
+        }
+        
     stage('Clone Repo') {
       steps {
         sh "git clone https://github.com/ashishmishra36/learnings.git"
@@ -19,9 +27,6 @@ pipeline {
     stage('Install & Build') {
       steps {
         sh '''
-          echo "Installing dependencies..."
-          pip install -r requirements.txt
-
           echo "Running tests..."
           pytest ecommerce/tests --html=reports/report.html
         '''
