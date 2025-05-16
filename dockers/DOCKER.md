@@ -32,6 +32,9 @@ docker run -d \
 docker exec -it -u 0 1a1c7beb97ec /bin/bash
 apt update && apt install -y docker.io
 usermod -aG docker jenkins
+exit 
+docker restart jenkins
+
 
 
 docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword

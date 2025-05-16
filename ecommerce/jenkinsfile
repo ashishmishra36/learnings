@@ -11,6 +11,11 @@ pipeline {
 
 
   stages {
+         stage('Check User') {
+              steps {
+                sh 'whoami && id'
+              }
+         }
 
          stage('Run') {
             steps {
