@@ -1,7 +1,7 @@
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.firefox.options import Options
+# from selenium.webdriver.firefox.options import Options
 from utils.logger import generate_logger
 
 # @pytest.fixture(scope="session")
@@ -21,11 +21,11 @@ def init_driver(request):
         chrome_options.add_argument("--disable-dev-shm-usage")
         web_driver = webdriver.Chrome(options=chrome_options)
         # web_driver = webdriver.Chrome()
-    if request.param=='firefox':
-        # firefox_options = Options()
-        # firefox_options.add_argument("--headless")
-        # web_driver = webdriver.Firefox(options=firefox_options)
-        web_driver = webdriver.Firefox()
+    # if request.param=='firefox':
+    #     # firefox_options = Options()
+    #     # firefox_options.add_argument("--headless")
+    #     # web_driver = webdriver.Firefox(options=firefox_options)
+    #     web_driver = webdriver.Firefox()
     request.cls.driver = web_driver
     yield
     print('----------------------------tearing down----------------------------')
