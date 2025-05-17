@@ -1,0 +1,42 @@
+pipeline {
+  agent {
+        docker {
+             image 'selenium/standalone-chromium:latest'
+        }
+  }
+
+  parameters {
+    booleanParam(name: 'CLEANUP_AFTER', defaultValue: true, description: 'Clean up after job?')
+  }
+
+
+  stages {
+         stage('Check User') {
+              steps {
+                sh 'whoami && id'
+              }
+         }
+
+         stage('Run') {
+            steps {
+
+                    sh '''
+                      echo "Installing Python..."
+                      
+                      python3 --version
+
+                      echo "Setting up Python venv..."
+                      python3 -m venv venv
+                      . venv/bin/activate
+
+                      echo "Installing dependencies..."
+                      pwd
+                      pip3 install -r requirements.txt
+
+                      echo "Running tests..."
+                      ./venv/bin/pytest ecommerce/tests --html=reports/report.html
+                    '''
+            }
+         }
+  }
+}
