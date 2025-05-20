@@ -15,13 +15,16 @@ class TestSuccessRegistration(BaseTest):
         self.homePage = HomePage(self.driver)
         register_page = self.homePage.click_to_register()
         registration_data = fetch_registration_data(TestData.EXCEL_SHEET, TestData.SHEET_NAME)
-        register = register_page.submit_register_form(registration_data)
-        print(f'registration page submitted successfully ')
-        if register:
-            print('under the SUCCESS_REGISTRATION register page')
-            title= register.get_success_register_page_title(TestData.SUCCESS_REGISTRATION)
-            assert title == TestData.SUCCESS_REGISTRATION
-            update_row_in_sheet(TestData.EXCEL_SHEET, TestData.SHEET_NAME, registration_data)
-            print(registration_data)
+        if registration_data:
+            register = register_page.submit_register_form(registration_data)
+            print(f'registration page submitted successfully ')
+            if register:
+                print('under the SUCCESS_REGISTRATION register page')
+                title= register.get_success_register_page_title(TestData.SUCCESS_REGISTRATION)
+                assert title == TestData.SUCCESS_REGISTRATION
+                update_row_in_sheet(TestData.EXCEL_SHEET, TestData.SHEET_NAME, registration_data)
+                print(registration_data)
+            else:
+                assert False, 'Failed to fill registration form! '
         else:
             assert False, 'Failed to fill registration form! '

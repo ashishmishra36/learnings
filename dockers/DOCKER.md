@@ -46,3 +46,9 @@ docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 3. to get the updates inside the docker: apt-get update
 4. to install python inside the docker: apt-get install python3
 5. to install pip: apt-get install python3-pip
+
+
+
+## to run selenium grid with chrome 
+docker pull seleniarm/standalone-chromium
+$ docker run --rm -it -p 4444:4444 -p 5900:5900 -p 7900:7900 --shm-size 2g seleniarm/standalone-chromium:latest
