@@ -9,6 +9,9 @@ from utils.logger import generate_logger
 # def logger():
 #     return generate_logger('test_logs')
 
+# URL of your Selenium Grid hub
+grid_url = "http://172.17.0.3:4444/wd/hub"
+
 
 @pytest.fixture(params=['docker'], scope='class')
 def init_driver(request):
@@ -29,7 +32,7 @@ def init_driver(request):
         options.add_argument("--headless")
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
-        web_driver = webdriver.Remote(options=options)
+        web_driver = webdriver.Remote(command_executor=grid_url,options=options)
     # if request.param=='firefox':
     #     # firefox_options = Options()
     #     # firefox_options.add_argument("--headless")
