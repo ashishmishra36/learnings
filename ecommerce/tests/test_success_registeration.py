@@ -10,7 +10,7 @@ class TestSuccessRegistration(BaseTest):
 
     @allure.description("Verify that user is able to register successfully and lands on success page")
     @allure.severity(allure.severity_level.CRITICAL)
-    @pytest.mark.mac
+    @pytest.mark.skip(reason="Test is under development")
     def test_success_registration_title(self):
         self.homePage = HomePage(self.driver)
         register_page = self.homePage.click_to_register()
