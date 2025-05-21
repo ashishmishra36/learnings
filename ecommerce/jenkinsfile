@@ -34,7 +34,7 @@ pipeline {
                       pip3 install -r requirements.txt
 
                       echo "Running tests..."
-                      ./venv/bin/pytest ecommerce/tests --html=reports/report.html
+                      ./venv/bin/pytest ecommerce/tests -v -s --html=reports/report.html
                     '''
             }
          }

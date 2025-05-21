@@ -21,7 +21,7 @@ docker system prune
   -v ~/.ssh:/var/jenkins_home/.ssh \
   jenkins/jenkins:lts
 
-to run jenkins with access to docker -
+## to run jenkins with access to docker -
 docker run -d \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v jenkins_home:/var/jenkins_home \
@@ -32,11 +32,16 @@ docker run -d \
 docker exec -it -u 0 1a1c7beb97ec /bin/bash
 apt update && apt install -y docker.io
 usermod -aG docker jenkins
-sudo chown root:docker /var/run/docker.sock
-sudo chmod 664 /var/run/docker.sock
+chown root:docker /var/run/docker.sock
+chmod 664 /var/run/docker.sock
 
 exit 
 docker restart jenkins
+
+## to run selenium grid with chrome 
+docker pull seleniarm/standalone-chromium
+docker run --rm -it -p 4444:4444 -p 5900:5900 -p 7900:7900 --shm-size 2g seleniarm/standalone-chromium:latest
+
 
 
 
@@ -50,6 +55,3 @@ docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 
 
 
-## to run selenium grid with chrome 
-docker pull seleniarm/standalone-chromium
-docker run --rm -it -p 4444:4444 -p 5900:5900 -p 7900:7900 --shm-size 2g seleniarm/standalone-chromium:latest
