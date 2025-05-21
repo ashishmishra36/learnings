@@ -55,7 +55,7 @@ docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 
 
 # ngrok - 563AUQCEAU73ZE5323C3TIQYL2QCJ7EB
-
+# these are ngrok codes
 AVNH7KTZSC
 A9RGBGV32J
 FAY766SJ46
