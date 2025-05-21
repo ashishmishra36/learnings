@@ -10,7 +10,7 @@ from utils.logger import generate_logger
 #     return generate_logger('test_logs')
 
 # URL of your Selenium Grid hub
-grid_url = "http://172.17.0.3:4444/wd/hub"
+grid_url = "http://localhost:4444/wd/hub"
 
 
 @pytest.fixture(params=['docker'], scope='class')

@@ -27,4 +27,4 @@ class TestSuccessRegistration(BaseTest):
             else:
                 assert False, 'Failed to fill registration form! '
         else:
-            assert False, 'Failed to fill registration form! '
+            assert False, 'Failed to get a valid registration data ! '
