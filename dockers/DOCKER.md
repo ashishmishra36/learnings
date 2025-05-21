@@ -54,4 +54,18 @@ docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 6. to install venv: apt install python3.11-venv
 
 
+# ngrok - 563AUQCEAU73ZE5323C3TIQYL2QCJ7EB
+
+AVNH7KTZSC
+A9RGBGV32J
+FAY766SJ46
+XZ8Z8FG474
+CBG94MJKGH
+JV8PPWZ4FK
+2TDQSXGJFF
+WTTJRJDKX3
+HNRSR68ZNT
+76KYUP67J6
+
+
 
