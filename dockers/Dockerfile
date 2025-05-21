@@ -1,6 +1,16 @@
-FROM jenkins/jenkins:lts
+FROM python:3.11-slim
 
-USER root
-RUN apt-get update && apt-get install -y python3 python3-pip
+# Set workdir
+WORKDIR /app
 
-USER jenkins
+# Copy requirements first to leverage Docker cache
+COPY requirements.txt .
+
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy your test code or app
+COPY . .
+
+# Entry point or default command
+CMD ["pytest"]
