@@ -3,9 +3,9 @@ import math
 
 
 class Tiago:
-    vehicle = 'car'
+    vehicle = 'car' #this is class variable
 
-# attributes given in constructor definition need to be given at the of initialization
+# attributes given in constructor definition need to be given at the of time of initialization
     # self.attribute - means we are attaching the attribute with the class,
     # right side of self.attribute will be set as the value given at the time initialization
     def __init__(self, color, model, fuel):
@@ -35,7 +35,7 @@ class Engine(Tiago):
 
     def __int__(self):
         print('this is engine of a car!!')
-        Tiago.__init__()
+        # Tiago.__init__()
 
     def has_noise(self):
         print('it has noise ')
@@ -43,10 +43,10 @@ class Engine(Tiago):
     def working(self):
         print('no its not working ! ')
 
-my_car = Tiago(color='yellow', model=2025, fuel='diesel')
+# my_car = Tiago(color='yellow', model=2025, fuel='diesel')
 
 
-# my_engine = Engine(color='black', model=2020, fuel='gas')
+my_engine = Engine(color='black', model=2020, fuel='gas')
 # my_engine.speed(5000,100)
 # my_engine.working()
 # my_car.working()
@@ -70,12 +70,12 @@ class Line:
         b = self.coor2[0] - self.coor1[0]
         print (a/b)
 
-coordinate1 = (3, 2)
-coordinate2 = (8, 10)
-
-li = Line(coordinate1, coordinate2)
-li.distance()
-li.slope()
+# coordinate1 = (3, 2)
+# coordinate2 = (8, 10)
+#
+# li = Line(coordinate1, coordinate2)
+# li.distance()
+# li.slope()
 
 
 

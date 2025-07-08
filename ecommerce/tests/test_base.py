@@ -1,5 +1,4 @@
 import pytest
-from utils.logger import generate_logger
 
 
 @pytest.mark.usefixtures('init_driver')

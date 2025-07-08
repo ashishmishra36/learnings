@@ -20,11 +20,12 @@ This project is an automated test suite for an E-Commerce web application perfor
 
 ## Instruction
 1. git clone https://github.com/ashishmishra36/learnings.git
-2. pip install -r requirements.txt
-3. run this command to activate .venv:  source .venv/bin/activate
-3. cd ecommerce/tests pytest -v -s --html=reports/report.html
-4. cd ecommerce/tests && pytest --alluredir reports/results_04292025_01 --clean-reports/results_04292025_01
-5. allure serve reports/results_04292025_01
+2. create a virtual environment: python -m venv .venv
+3. run this command to activate virtual environment:  source .venv/bin/activate
+4. pip install -r requirements.txt
+5. cd ecommerce/tests pytest -v -s --html=reports/report.html
+6. cd ecommerce/tests && pytest --alluredir reports/results_04292025_01 --clean-reports/results_04292025_01
+7. allure serve reports/results_04292025_01
 
 
 ## Tools
