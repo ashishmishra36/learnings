@@ -3,56 +3,35 @@ import math
 
 
 class Tiago:
-    vehicle = 'car' #this is class variable
+    vehicle = 'car'
 
-# attributes given in constructor definition need to be given at the of time of initialization
+# attributes given in constructor definition need to be given at the of initialization
     # self.attribute - means we are attaching the attribute with the class,
     # right side of self.attribute will be set as the value given at the time initialization
+    # these are instance variable
     def __init__(self, color, model, fuel):
-        self.color = color
-        self.model = model
-        self.fuel = fuel
+        self.car_color = color
+        self.car_model = model
+        self.car_fuel = fuel
         print('This is Tiago car')
 
 
     def speed(self, distance, time):
-        print(f'Speed of my {self.vehicle} which runs on {self.fuel} has speed of {distance/time}')
+        print(f'Speed of my {self.vehicle} which runs on {self.car_fuel} has speed of {distance/time}')
 
     def working(self):
         print('yes , it is working')
 
+    def upgrade_model(self):
+        return self.car_model+'007'
+
     # special method / magic or dunder method :: to print string representation of the class object
     def __str__(self):
-        return f'my car has {self.color} and it runs on {self.fuel} '
+        return f'my car has {self.car_color} and it runs on {self.car_fuel} '
 
     def __del__(self):
         return 'Tiago object has been deleted'
 
-
-
-
-class Engine(Tiago):
-
-    def __int__(self):
-        print('this is engine of a car!!')
-        # Tiago.__init__()
-
-    def has_noise(self):
-        print('it has noise ')
-
-    def working(self):
-        print('no its not working ! ')
-
-# my_car = Tiago(color='yellow', model=2025, fuel='diesel')
-
-
-my_engine = Engine(color='black', model=2020, fuel='gas')
-# my_engine.speed(5000,100)
-# my_engine.working()
-# my_car.working()
-# print(my_car)
-# del my_car
-# print(my_car)
 
 #Fill in the Line class methods to accept coordinates as a pair of tuples and return the slope and distance of the line.
 class Line:
