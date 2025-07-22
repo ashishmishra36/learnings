@@ -1,13 +1,13 @@
+import logging
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver import ChromeOptions
-# from selenium.webdriver.firefox.options import Options
 from utils.logger import generate_logger
 
-# @pytest.fixture(scope="session")
-# def logger():
-#     return generate_logger('test_logs')
+# Setup logging
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+logger = logging.getLogger(__name__)
 
 # URL of your Selenium Grid hub
 grid_url = "http://172.17.0.2:4444/wd/hub"
