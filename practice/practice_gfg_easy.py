@@ -168,8 +168,8 @@ b =Counter(a)
 # print(b.most_common(3))
 
 # shutil and OS module : move file between directories
-print(os.getcwd())
-print(os.listdir())
+# print(os.getcwd())
+# print(os.listdir())
 with open('modules.txt','a+') as f:
     f.write('this if fos os and shutil module \n \t')
 
@@ -177,12 +177,34 @@ with open('modules.txt','a+') as f:
 #     if not x.startswith('practice'):
 #         shutil.move(x,'gfg')
 
-print(datetime.datetime.now())
-print(datetime.date.today())
-print(datetime.time.min)
-print(datetime.time(2,20))
-print(datetime.date(2024,4,30))
-print(datetime.date(2024,4,30)-datetime.date(2000,4,30))
+# print(datetime.datetime.now())
+# print(datetime.date.today())
+# print(datetime.time.min)
+# print(datetime.time(2,20))
+# print(datetime.date(2024,4,30))
+# print(datetime.date(2024,4,30)-datetime.date(2000,4,30))
+
+def removeElement( nums, val):
+    l = 0
+    r = len(nums)
+    while l < r:
+        if nums[l] == val:
+            print(nums[l], nums[r - 1])
+            nums[l] = nums[r - 1]  # Move last element to current position
+            r =r-1  # Reduce array size
+            print(nums)
+        else:
+            l=l+1
+    return r
+
+
+
+nums= [0,1,2,2,3,0,4,2]
+val =2
+k = removeElement(nums,val)
+print(nums)
+print(k)
+print(nums[:k])
 
 
 

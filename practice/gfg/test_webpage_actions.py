@@ -15,7 +15,6 @@ def driver():
 """
 this method to fetch static drop-down using select class
 """
-@pytest.mark.skip
 def test_static_drop_down(driver):
     driver.maximize_window()
     driver.get("https://rahulshettyacademy.com/angularpractice/")
@@ -33,7 +32,7 @@ def test_static_drop_down(driver):
 
 
 """to test dynamic typed drop down like when we type first 3 chars then drop down comes with a list"""
-@pytest.mark.skip
+
 def test_dyn_drop_down(driver):
     driver.maximize_window()
     driver.get("https://rahulshettyacademy.com/dropdownsPractise/")
@@ -50,7 +49,7 @@ def test_dyn_drop_down(driver):
     assert driver.find_element(By.XPATH, "//input[@id='autosuggest']").get_attribute("value")=="India"
 
 
-@pytest.mark.skip
+"""to select a radio button if it is not selected"""
 def test_radio_button(driver):
     driver.maximize_window()
     driver.get("https://rahulshettyacademy.com/AutomationPractice/")
@@ -69,6 +68,7 @@ def test_radio_button(driver):
     print("checkbox is selected")
 
 
+@pytest.mark.skip
 def test_show_hide_text(driver):
     driver.maximize_window()
     driver.get("https://rahulshettyacademy.com/AutomationPractice/")
@@ -78,4 +78,18 @@ def test_show_hide_text(driver):
     if text_box.is_displayed():
         driver.find_element(By.XPATH, '//input[@id="hide-textbox"]').click()
     assert text_box.is_displayed() == False, "Error ! text_box is still visible ! "
+
+
+"""to click on alert not a java script pop-up"""
+def test_alert(driver):
+    driver.maximize_window()
+    driver.get("https://rahulshettyacademy.com/AutomationPractice/")
+    driver.find_element(By.XPATH,"//input[@name='enter-name']").send_keys("Ashish")
+    driver.find_element(By.XPATH,"//input[@id='alertbtn']").click()
+    # switchto method gives you lots of options to swicth
+    alert = driver.switch_to.alert
+    assert "Ashish" in alert.text
+    alert.accept()
+
+
 
