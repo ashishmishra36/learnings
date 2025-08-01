@@ -2,8 +2,8 @@ import time
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.select import Select
-from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions
 
 """write a fixture which launch the browser"""
 @pytest.fixture
@@ -14,7 +14,11 @@ def driver():
 
 
 """test : go to the page -> search for veg name -> select all veges -> go to cart match the amount with total 
-then apply a discount code -> verify discount is applied """
+then apply a discount code -> verify discount is applied 
+Why explicit wait : An explicit wait tells Selenium to:
+"Wait for a specific condition to occur before proceeding further.
+It checks for the condition repeatedly until it's true or the timeout expires. """
+
 def test_cart_test(driver):
     driver.maximize_window()
     driver.get("https://rahulshettyacademy.com/seleniumPractise/#/")
@@ -50,7 +54,13 @@ def test_cart_test(driver):
         print("click the promo code apply button")
         driver.find_element(By.CLASS_NAME,"promoBtn").click()
         # verify that "Code applied ..!" text appears when promo code is applied
+        """explicit wait will not override the implicit wait """
+        wait = WebDriverWait(driver, 10)
+        wait.until(expected_conditions.presence_of_element_located((By.CLASS_NAME, "promoInfo")))
         assert driver.find_element(By.CLASS_NAME, "promoInfo").text == "Code applied ..!", "Error ! text is not found "
+        amounts = driver.find_elements(By.CSS_SELECTOR, "tr td:nth-child(5) p")
+        for amount in amounts:
+            print(amount.text)
     except Exception as n:
         pytest.fail(f'Error: {str(n)}')
 
