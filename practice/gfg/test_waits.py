@@ -58,9 +58,19 @@ def test_cart_test(driver):
         wait = WebDriverWait(driver, 10)
         wait.until(expected_conditions.presence_of_element_located((By.CLASS_NAME, "promoInfo")))
         assert driver.find_element(By.CLASS_NAME, "promoInfo").text == "Code applied ..!", "Error ! text is not found "
-        amounts = driver.find_elements(By.CSS_SELECTOR, "tr td:nth-child(5) p")
+        # this code example is to how - how to read table
+        # amounts = driver.find_elements(By.CSS_SELECTOR, "tr td:nth-child(5) p")
+        amounts = driver.find_elements(By.XPATH, "//td[5]/p")
         for amount in amounts:
-            print(amount.text)
+            print(f'amount of the the item is : {amount.text}')
+
+        # assignment : get the total amount and the discounted amount assert that discounted amount < total amount
+
+        total_amount = driver.find_element(By.XPATH, '//div[@style]/span[1]').text
+        discounted_amount = driver.find_element(By.XPATH, '//div[@style]/span[3]').text
+        assert discounted_amount<total_amount, f'Error ! discount amount {discounted_amount} can be greater then total amount {total_amount}'
+
+
     except Exception as n:
         pytest.fail(f'Error: {str(n)}')
 
