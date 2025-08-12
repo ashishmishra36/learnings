@@ -1,3 +1,5 @@
+import time
+
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
@@ -57,3 +59,37 @@ def test_assignment(driver):
         EC.visibility_of_element_located((By.CLASS_NAME, "alert-danger"))
     )
     print(alert.text)
+
+
+"""open a page which has iframe - find all the iframes , now switch to one the frame 
+perform some action like clik on some link -> it opens a new window get all windows and switch to the new window opened
+get the title of new window opened"""
+def test_iframe(driver):
+    driver.maximize_window()
+    driver.get('https://www.tutorialspoint.com/selenium/practice/frames.php')
+    iframes = driver.find_elements(By.TAG_NAME, "iframe")
+    driver.implicitly_wait(5)
+    print(f'total frames on the pages: {len(iframes)}')
+    driver.switch_to.frame(iframes[0])
+    time.sleep(2)
+    my_link = driver.find_element(By.PARTIAL_LINK_TEXT, "Selenium Tutorial")
+    print(my_link.text)
+    my_link.click()
+    time.sleep(2)
+    w = driver.window_handles
+    print(f'now total windows open are: {len(w)} ')
+    if len(w)>1:
+        driver.switch_to.window(w[1])
+        time.sleep(10)
+        WebDriverWait(driver,10).until(EC.new_window_is_opened(w))
+        WebDriverWait(driver, 10).until(EC.title_is('Selenium Tutorial'))
+        print(f'title of the new window is : {driver.title} ')
+        driver.close()
+        driver.switch_to.default_content()
+        print(driver.current_url)
+    else:
+        pytest.fail(f'extra tab is not opened !')
+
+    driver.quit()
+
+
