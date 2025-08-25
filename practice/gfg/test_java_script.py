@@ -127,6 +127,9 @@ def test_product_selections(driver):
     if "Checkout ( 1 )" in driver.find_element(By.XPATH,'//*[@id="navbarResponsive"]/ul/li/a').text:
         print('Amazing We are good !!!')
 
+    # put xpath in the console to find out if a element is present on UI
+    # $x("//button[@class='btn btn-success']")
+
 
 
 

@@ -3,13 +3,22 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
+"""
+command : pytest -k method -v -s 
+give keyword with -k , and pytest will run all the test which has that keyword
+-v - means print more verbose more details 
+-s to print loggers 
+-m : mark the test case with @pytest.mark 
+"""
+
+
 # important : test should be starting with test or ending with test
-@pytest.mark.skip
+@pytest.mark.smoke
 def test_method_one():
     a, b = 4, 5
     assert a==b, 'test failed: a and b are not equal'
 
-@pytest.mark.skip
+@pytest.mark.smoke
 def test_method_two():
     s = 'Ashish'
     assert len(s)==6, 'test failed: length is not as per expectation'
@@ -64,3 +73,8 @@ def test_perm_time_line():
     assert driver.title =='PERM Processing Time'
     driver.quit()
 
+
+"""notes: when you are returning somthing from a fixture then we have to pass fixture name as an argument"""
+@pytest.mark.usefixtures
+def test_data_fixtures(data_load):
+    print(data_load)

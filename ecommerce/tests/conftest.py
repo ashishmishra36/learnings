@@ -13,6 +13,7 @@ logger = logging.getLogger(__name__)
 grid_url = "http://172.17.0.2:4444/wd/hub"
 
 
+# parameterized with multiple data set
 @pytest.fixture(params=['docker'], scope='class')
 def init_driver(request):
     print(f'Test name is : {request.node.name}')

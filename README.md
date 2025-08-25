@@ -47,6 +47,13 @@ GitHub Repo  ──(push)──► Jenkins Webhook Trigger (in Docker)
                                          └── generate reports and share over my email
                                                 └── store those reports to a s3 and user should be able to access it
 
+## Basic best practices followed
+1. no hard coded test data 
+2. Externalize test data from csv files
+3. Design pattern
+4. Reusable code utility and conf.py
+5. 
+
 
 
 ## Xpath 
