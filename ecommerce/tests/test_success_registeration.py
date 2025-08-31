@@ -1,7 +1,7 @@
 import pytest
 from configs.config import TestData
 from pages.home_page import HomePage
-from tests.test_base import BaseTest
+from tests.base_test import BaseTest
 from utils.util_excel import fetch_registration_data, update_row_in_sheet
 import allure
 

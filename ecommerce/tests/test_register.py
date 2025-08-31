@@ -1,6 +1,6 @@
 from configs.config import TestData
 from pages.home_page import HomePage
-from tests.test_base import BaseTest
+from tests.base_test import BaseTest
 import allure
 
 

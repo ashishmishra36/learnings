@@ -1,13 +1,11 @@
 import pytest
 from configs.config import TestData
 from pages.home_page import HomePage
-from tests.test_base import BaseTest
+from tests.base_test import BaseTest
 import allure
 
 
 class TestHomePage(BaseTest):
-
-
 
     @allure.description("Verify title of the home page is as expected")
     @allure.severity(allure.severity_level.CRITICAL)
@@ -42,7 +40,7 @@ class TestHomePage(BaseTest):
 
     @allure.description("Verify carousel has correct items")
     @allure.severity(allure.severity_level.NORMAL)
-    @pytest.mark.car
+    # @pytest.mark.car
     def test_carousel_horizontal(self):
         self.homePage = HomePage(self.driver)
         items = self.homePage.get_items_in_carousel()

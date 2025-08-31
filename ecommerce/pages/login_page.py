@@ -5,11 +5,8 @@ from selenium.webdriver.common.by import By
 
 class LoginPage(BasePage):
     EMAIL = (By.ID, 'input-email')
-    PASSWORD = (By.ID), 'input-password'
+    PASSWORD = (By.ID, 'input-password')
     BTN_LOGIN = (By.XPATH, "//input[@type='submit']")
-
-
-
 
 
     def get_login_page_title(self, title):

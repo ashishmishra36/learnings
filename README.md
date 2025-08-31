@@ -27,6 +27,17 @@ This project is an automated test suite for an E-Commerce web application perfor
 6. cd ecommerce/tests && pytest --alluredir reports/results_04292025_01 --clean-reports/results_04292025_01
 7. allure serve reports/results_04292025_01
 
+conftest.py fixture (init_driver)
+       ↓
+request.cls.driver = driver
+       ↓
+BaseTest (uses fixture)
+       ↓
+Child Test Class (inherits BaseTest → self.driver available)
+       ↓
+Page Objects (driver passed via constructor)
+
+
 
 ## Tools
 1. Python 3.x - language used
