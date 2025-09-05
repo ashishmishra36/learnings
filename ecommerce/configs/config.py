@@ -4,7 +4,9 @@ This page stores all configurations and test data
 
 
 class TestData:
-    BASE_URL = 'https://naveenautomationlabs.com/opencart/index.php'
+    BASE_URL_QA = 'https://naveenautomationlabs.com/opencart/index.php'
+    BASE_URL_PROD = 'https://naveenautomationlabs.com/opencart/index.php'
+    BASE_URL_STAGE = 'https://naveenautomationlabs.com/opencart/index.php'
     HOME_PAGE_TITLE = 'Your Store'
     REGISTER_PAGE_URL= 'https://naveenautomationlabs.com/opencart/index.php?route=account/register'
     REGISTER_PAGE_TITLE ='Register Account'

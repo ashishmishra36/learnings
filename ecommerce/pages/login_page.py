@@ -9,9 +9,6 @@ class LoginPage(BasePage):
     BTN_LOGIN = (By.XPATH, "//input[@type='submit']")
 
 
-    def get_login_page_title(self, title):
-        return self.get_page_title(title)
-
     def enter_login_details(self, email, password):
         self.do_send_keys(self.EMAIL,email)
         self.do_send_keys(self.PASSWORD, password)

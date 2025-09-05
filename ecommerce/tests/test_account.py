@@ -22,7 +22,7 @@ class TestAccount(BaseTest):
     def test_account_login(self, test_data_list):
         self.homePage = HomePage(self.driver)
         login_page = self.homePage.click_to_login()
-        title= login_page.get_login_page_title(TestData.LOGIN_PAGE_TITLE)
+        title= login_page.get_page_title(TestData.LOGIN_PAGE_TITLE)
         print('under the login page')
         if title == TestData.LOGIN_PAGE_TITLE:
             account_page =  login_page.enter_login_details(test_data_list['email'],test_data_list['password'])

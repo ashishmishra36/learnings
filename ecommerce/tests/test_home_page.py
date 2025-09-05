@@ -12,13 +12,14 @@ class TestHomePage(BaseTest):
     @pytest.mark.order(1)
     def test_home_page_title(self):
         self.homePage = HomePage(self.driver)
-        title = self.homePage.get_home_page_title(TestData.HOME_PAGE_TITLE)
+        title = self.homePage.get_page_title(TestData.HOME_PAGE_TITLE)
         assert title == TestData.HOME_PAGE_TITLE
 
 
     @allure.description("Verify the image appearing on the home page, to make sure home page is loaded")
     @allure.severity(allure.severity_level.NORMAL)
     @pytest.mark.order(2)
+    @pytest.mark.smoke
     def test_image(self):
         self.homePage = HomePage(self.driver)
         assert self.homePage.get_home_page_image() , 'Image is not displayed! '
@@ -27,6 +28,7 @@ class TestHomePage(BaseTest):
     @allure.description("Verify user successfully add macbook on home screen")
     @allure.severity(allure.severity_level.NORMAL)
     @pytest.mark.order(4)
+    @pytest.mark.smoke
     def test_add_macbook(self):
         self.homePage = HomePage(self.driver)
         assert self.homePage.add_item_without_login() == TestData.CART_TOTAL_1_ITEM
@@ -34,13 +36,14 @@ class TestHomePage(BaseTest):
     @allure.description("Verify cart is empty")
     @allure.severity(allure.severity_level.NORMAL)
     @pytest.mark.order(3)
+    @pytest.mark.sanity
     def test_empty_cart(self):
         self.homePage = HomePage(self.driver)
         assert self.homePage.check_cart() == TestData.TEXT_EMPTY_CART, 'Error ! cart is not empty'
 
     @allure.description("Verify carousel has correct items")
     @allure.severity(allure.severity_level.NORMAL)
-    # @pytest.mark.car
+    @pytest.mark.sanity
     def test_carousel_horizontal(self):
         self.homePage = HomePage(self.driver)
         items = self.homePage.get_items_in_carousel()

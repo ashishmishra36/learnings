@@ -1,9 +1,13 @@
 import logging
+import allure
+from allure_commons.types import AttachmentType
+
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChromeOption
 from selenium.webdriver.firefox.options import Options as FirefoxOption
 
+from configs.config import TestData
 
 # Setup logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
@@ -16,6 +20,7 @@ grid_url = "http://172.17.0.2:4444/wd/hub"
 def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="chrome", help="browser name given in command")
     parser.addoption("--headless", action="store_true", help="run browser in headless mode")
+    parser.addoption("--env", action="store", default="QA", help="give environment")
 
 
 # parameterized with multiple data set
@@ -29,7 +34,7 @@ def init_driver(request):
     browser = request.config.getoption('--browser').lower()
     headless = request.config.getoption('--headless')
     driver=None
-    print(f'----------------------------Setting up: {browser}----------------------------')
+    print(f'-------------------Setting up: {browser} ----------------------------')
     if browser== 'chrome':
         chrome_options = ChromeOption()
         if headless:
@@ -51,12 +56,26 @@ def init_driver(request):
             firefox_options.add_argument("--headless")
         driver = webdriver.Firefox(options=firefox_options)
     else:
-        pytest.fail('Error! no browser provided !')
+        raise ValueError('Error! no browser provided !')
 
-    request.cls.driver = driver
+    # driver.get(TestData.BASE_URL)  launch URL in a separate method for maintainability
+
+    request.cls.driver = driver  # Attach driver to test class
+    driver.maximize_window()
     yield
     print('----------------------------tearing down----------------------------')
     driver.quit()
 
 
-
+@pytest.hookimpl(tryfirst=True, hookwrapper=True)
+def pytest_runtest_makereport(item, call):
+    outcome = yield
+    rep = outcome.get_result()
+    if rep.when == "call" and rep.failed:
+        if "selenium_driver" in item.fixturenames: # Assuming your driver fixture is named 'selenium_driver'
+            driver = item.funcargs["selenium_driver"]
+            allure.attach(
+                driver.get_screenshot_as_png(),
+                name="Failed Test Screenshot",
+                attachment_type=AttachmentType.PNG
+            )

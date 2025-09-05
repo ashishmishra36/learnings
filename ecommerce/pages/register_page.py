@@ -16,9 +16,6 @@ class RegisterPage(BasePage):
     CONTINUE = (By.XPATH, "//*[@type='submit']")
 
 
-    def get_register_page_title(self, title):
-        return self.get_page_title(title)
-
     def submit_register_form(self, form_dict):
         field_locators= {
             'first_name' : self.FIRSTNAME,

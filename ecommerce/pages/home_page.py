@@ -19,10 +19,6 @@ class HomePage(BasePage):
     # CAROUSEL = (By.CSS_SELECTOR, ".swiper-wrapper img")
 
 
-    def get_home_page_title(self, title):
-        return self.get_page_title(title)
-
-
     def get_home_page_image(self):
         return self.get_page_image(self.IMAGE)
 

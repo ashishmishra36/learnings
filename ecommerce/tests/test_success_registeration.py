@@ -20,7 +20,7 @@ class TestSuccessRegistration(BaseTest):
             print(f'registration page submitted successfully ')
             if register:
                 print('under the SUCCESS_REGISTRATION register page')
-                title= register.get_success_register_page_title(TestData.SUCCESS_REGISTRATION)
+                title= register.get_page_title(TestData.SUCCESS_REGISTRATION)
                 assert title == TestData.SUCCESS_REGISTRATION
                 update_row_in_sheet(TestData.EXCEL_SHEET, TestData.SHEET_NAME, registration_data)
                 print(registration_data)

@@ -38,6 +38,10 @@ Child Test Class (inherits BaseTest → self.driver available)
 Page Objects (driver passed via constructor)
 
 
+## command to execute the test suite
+
+pytest --broswer chrome --headless
+
 
 ## Tools
 1. Python 3.x - language used
@@ -60,10 +64,11 @@ GitHub Repo  ──(push)──► Jenkins Webhook Trigger (in Docker)
 
 ## Basic best practices followed
 1. no hard coded test data 
-2. Externalize test data from csv files
+2. Externalize test data from csv, json  files
 3. Design pattern
 4. Reusable code utility and conf.py
-5. 
+5. Reusable page action method kept under base page 
+6. test data should be sent from the test only 
 
 
 

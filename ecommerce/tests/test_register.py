@@ -12,7 +12,7 @@ class TestRegister(BaseTest):
     def test_register_page_title(self):
         self.homePage = HomePage(self.driver)
         register_page = self.homePage.click_to_register()
-        title= register_page.get_register_page_title(TestData.REGISTER_PAGE_TITLE)
+        title= register_page.get_page_title(TestData.REGISTER_PAGE_TITLE)
         print('under the register page')
         assert title == TestData.REGISTER_PAGE_TITLE
 
