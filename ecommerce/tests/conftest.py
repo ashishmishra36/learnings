@@ -7,7 +7,6 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChromeOption
 from selenium.webdriver.firefox.options import Options as FirefoxOption
 
-from configs.config import TestData
 
 # Setup logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")

@@ -19,19 +19,26 @@ This project is an automated test suite for an E-Commerce web application perfor
 ---
 
 ## Instruction
-1. git clone https://github.com/ashishmishra36/learnings.git
-2. create a virtual environment: python -m venv .venv
-3. run this command to activate virtual environment:  source .venv/bin/activate
-4. pip install -r requirements.txt
-5. cd ecommerce/tests pytest -v -s --html=reports/report.html
-6. cd ecommerce/tests && pytest --alluredir reports/results_04292025_01 --clean-reports/results_04292025_01
-7. allure serve reports/results_04292025_01
+1. Clone the repository
+        git clone https://github.com/ashishmishra36/learnings.git
+        cd learnings
+2. create a virtual environment
+        python -m venv .venv
+3. Activate virtual environment
+        source .venv/bin/activate(macOS/Linux (bash/zsh))
+        .venv\Scripts\Activate.ps1(Windows (PowerShell))
+        .venv\Scripts\activate.bat(Windows)
+        source .venv/Scripts/activate(git bash)
+4. Upgrade pip(recommended)
+        python -m pip install --upgrade pip
+5. pip install -r requirements.txt
+6. cd ecommerce/tests pytest -v -s --html=reports/report.html
+7. cd ecommerce/tests && pytest --alluredir reports/results_04292025_01 --clean-reports/results_04292025_01
+8. allure serve reports/results_04292025_01
 
-conftest.py fixture (init_driver)
-       ↓
-request.cls.driver = driver
-       ↓
-BaseTest (uses fixture)
+## Flow of calls 
+
+conftest.py fixture (init_driver) -> request.cls.driver = driver -> BaseTest (uses fixture)
        ↓
 Child Test Class (inherits BaseTest → self.driver available)
        ↓
