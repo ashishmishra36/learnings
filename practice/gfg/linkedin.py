@@ -2,61 +2,78 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
-import time
-
-options = Options()
-options.add_argument("--start-maximized")
-driver = webdriver.Chrome(service=Service(), options=options)
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
-def login_linkedin(username, password):
+def create_driver(headless=False):
+    """Create and configure a Chrome WebDriver instance."""
+    options = Options()
+    options.add_argument("--start-maximized")
+    if headless:
+        options.add_argument("--headless")
+        options.add_argument("--disable-gpu")
+    service = Service()
+    driver = webdriver.Chrome(service=service, options=options)
+    driver.implicitly_wait(10)  # Default wait for all elements
+    return driver
+
+
+def login(driver, username, password):
+    """Generic login function for testing."""
     driver.get("https://www.linkedin.com/login")
-    time.sleep(2)  # Allow time for the page to load
-    # sign_in_button = driver.find_element((By.XPATH, '//*[@id="main-content"]/section[1]/div/div/a'))
-    # sign_in_button.click()
-    time.sleep(2)  # Allow time for the page to load
 
-    email_field = driver.find_element(By.XPATH, '//*[@id="username"]')
-    password_field = driver.find_element(By.XPATH, '//*[@id="password"]')
+    # Wait until fields are visible instead of fixed sleeps
+    wait = WebDriverWait(driver, 10)
+    email_field = wait.until(EC.presence_of_element_located((By.ID, "username")))
+    password_field = driver.find_element(By.ID, "password")
     login_button = driver.find_element(By.XPATH, "//button[@type='submit']")
 
     email_field.send_keys(username)
     password_field.send_keys(password)
     login_button.click()
-    time.sleep(5)  # Allow time for login to complete
 
 
-def edit_about_section():
-    driver.get("https://www.linkedin.com/in/ashishm-test-analyst/")
-    time.sleep(5)  # Allow profile to load
+def edit_about_section(driver, profile_url):
+    """Generic profile edit function for testing demo purposes."""
+    driver.get(profile_url)
+    wait = WebDriverWait(driver, 10)
 
-    # Scroll down to the About section
-    about_section = driver.find_element(By.XPATH,
-                                        '//*[@id="navigation-add-edit-deeplink-edit-about"]')
-    driver.execute_script("arguments[0].scrollIntoView();", about_section)
-    time.sleep(2)
+    about_section = wait.until(
+        EC.element_to_be_clickable((By.ID, "profile-card-name text-heading-large"))
+    )
     about_section.click()
-    time.sleep(3)  # Wait for the pop-up to appear
+    # driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", about_section)
+    field = wait.until(EC.element_to_be_clickable((By.ID, "navigation-add-edit-deeplink-edit-about")))
+    field.click()
 
-    # Find the text area in the About section
-    about_textarea = driver.find_element(By.XPATH, '//*[@id="gai-text-form-component-profileEditFormElement-SUMMARY-profile-ACoAAARGzBcBDBkxiw97L1FZyomSt45la7ll5io-summary"]')
-    current_text = about_textarea.get_attribute("value")
+    textarea = wait.until(
+        EC.presence_of_element_located((By.XPATH, "//textarea[contains(@id, 'summary')]"))
+    )
 
-    # Add an extra space at the end
-    about_textarea.clear()
-    about_textarea.send_keys(current_text + " ")
-    time.sleep(2)
+    current_text = textarea.get_attribute("value") or ""
+    textarea.clear()
+    textarea.send_keys(current_text.strip() + " ")
 
-    # Click on Save button
-    save_button = driver.find_element(By.XPATH, "//button[contains(@aria-label, 'Save')]")
+    save_button = wait.until(
+        EC.element_to_be_clickable((By.XPATH, "//button[contains(@aria-label, 'Save')]"))
+    )
     save_button.click()
-    time.sleep(5)
+
+
+def main():
+    # Do not include credentials in code — load from env or config in real use
+    USERNAME = "ashish.mishra36@gmail.com"
+    PASSWORD = "Ashish@2015"
+    PROFILE_URL = "https://www.linkedin.com/in/mishra36/"
+
+    driver = create_driver()
+    try:
+        login(driver, USERNAME, PASSWORD)
+        edit_about_section(driver, PROFILE_URL)
+    finally:
+        driver.quit()
 
 
 if __name__ == "__main__":
-    USERNAME = "ashish.mishra36@gmail.com"  # Replace with your LinkedIn email
-    PASSWORD = "Ashish@2015"  # Replace with your LinkedIn password
-
-    login_linkedin(USERNAME, PASSWORD)
-    edit_about_section()
-    driver.quit()
+    main()

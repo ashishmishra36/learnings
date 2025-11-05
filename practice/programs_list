@@ -121,10 +121,12 @@
 4. Activity Selection Problem *(added)*
 
 ---
-Searching (Sorted Data)			Binary Search
+Searching (Sorted Data)			    Binary Search
 Finding Subarrays/Substrings		Sliding Window
 Two Numbers / Pairing Problem		Two Pointers / Hashing
-Optimizing Recursive Calls		Dynamic Programming
-Grid / Network Problems			BFS / DFS
-Generating Combinations			Backtracking
-Sorting Data				QuickSort / MergeSort
+Optimizing Recursive Calls		    Dynamic Programming
+Grid / Network Problems			    BFS / DFS
+Generating Combinations			    Backtracking
+Sorting Data				        QuickSort / MergeSort /Bubble / Insertion / Selection sort
+                                    Prefix Sum / Difference Array
+parentheses validation              Stack Patterns

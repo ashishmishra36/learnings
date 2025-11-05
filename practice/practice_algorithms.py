@@ -1,6 +1,8 @@
-# Binary search on sorted array
+# Binary search on sorted array, because we take advantage of the sorted collections means why to
+# go in sequential way
 # time complexity is O(log n)
-a = [1,9,9,19,4,5,7, 0,1,3]
+# its a divide and conquer -> divide in between in each loop
+a = [1,9,9,11,14,15,17]
 def binary_search(a, target):
     # left : start of array / right = end of the array
     left, right = 0 , len(a)-1
@@ -12,7 +14,7 @@ def binary_search(a, target):
         if a[mid] == target:
             return mid
         # if target is bigger than middle element it means target is present on right side of the mid
-        # since previous steps we already checked that its not equal to mid so lets make left = next of mid index
+        # since previous steps we already checked that it's not equal to mid so lets make left = next of mid index
         elif a[mid]<target:
             print(left, right, mid)
             left = mid+1
@@ -23,6 +25,8 @@ def binary_search(a, target):
 
 
 # quick sort
+
+# divide and conquer
 # time complexity is O(nlog n), worst case - n^2, its in-place
 def quick_sort(a):
     #Base case:  if array length is one then just return the array
@@ -76,4 +80,46 @@ def merge(sorted_left,sorted_right):
     return result
 
 print(quick_sort(a))
+
+
+# Two pointer algorithm
+def reverse_string(s):
+    # take two pointers left and right, start swapping left most with right most
+    # after every swap make left = left+1 and right = right-1, until left<right(while condition)
+    left, right  =0, len(s)-1
+    s= list(s)
+    while left<right:
+        s[left],s[right]=s[right], s[left]
+        left=left+1
+        right=right-1
+    return ''.join(s)
+
+# sliding window algorithm
+# problem: Find a maximum sum of three elements from the list
+def sliding_window(arr, k):
+    # get the length of the list
+    n = len(arr)
+    # base case
+    if n<=k:
+        print('invalid list !')
+        return -1
+    else:
+        # get the sum of first k elements
+        window_sum = sum(arr[:k])
+        # make this sum as max sum
+        max_sum = window_sum
+        # since the last window ends on (n-k)th position
+        for i in range(n-k):
+            window_sum = window_sum - arr[i] + arr[i+k]
+            max_sum = max(window_sum, max_sum)
+        return max_sum
+
+a = [3,4,5,-1,0,9,1,8]
+print(sliding_window(a, 3))
+
+
+
+
+
+
 
