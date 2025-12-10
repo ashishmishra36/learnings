@@ -1,20 +1,30 @@
 import logging
-import os.path
+import os
 from datetime import datetime
 
-from configs.config import TestData
+def get_logger(name):
+    logs_dir = "logs"
+    os.makedirs(logs_dir, exist_ok=True)
 
+    log_file = os.path.join(logs_dir, f"{datetime.now().strftime('%Y-%m-%d')}.log")
 
-def generate_logger(name):
     logger = logging.getLogger(name)
-    if not logger.handlers:
-        logger.setLevel(logging.INFO)
-        log_file_name = datetime.now().strftime('%d%m%Y%H%M%S')
-        base_dir = os.path.dirname(os.path.abspath(__file__))
-        log_file_path = os.path.join(base_dir, '..', 'logs')
-        file_handler = logging.FileHandler(log_file_path+log_file_name+'.log', mode='a')
-        # define a format for logging
-        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-        file_handler.setFormatter(formatter)
-        logger.addHandler(file_handler)
+    logger.setLevel(logging.INFO)
+
+    # Prevent adding multiple handlers (critical fix!)
+    if logger.handlers:
+        return logger
+
+    formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+
+    # File handler (same file for a whole project)
+    file_handler = logging.FileHandler(log_file)
+    file_handler.setFormatter(formatter)
+    logger.addHandler(file_handler)
+
+    # Console handler (optional)
+    console_handler = logging.StreamHandler()
+    console_handler.setFormatter(formatter)
+    logger.addHandler(console_handler)
+
     return logger

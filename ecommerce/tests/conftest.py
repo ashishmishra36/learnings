@@ -1,16 +1,15 @@
 import logging
 import allure
 from allure_commons.types import AttachmentType
-
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChromeOption
 from selenium.webdriver.firefox.options import Options as FirefoxOption
+from configs.config import TestData
+from utils.logger import get_logger
 
+log = get_logger(__name__)
 
-# Setup logging
-logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
-logger = logging.getLogger(__name__)
 
 # URL of your Selenium Grid hub
 grid_url = "http://172.17.0.2:4444/wd/hub"
@@ -32,8 +31,9 @@ def init_driver(request):
     """
     browser = request.config.getoption('--browser').lower()
     headless = request.config.getoption('--headless')
+    env = request.config.getoption('--env').upper()
     driver=None
-    print(f'-------------------Setting up: {browser} ----------------------------')
+    log.info(f'-------------------Setting up: {browser} ----------------------------')
     if browser== 'chrome':
         chrome_options = ChromeOption()
         if headless:
@@ -60,10 +60,23 @@ def init_driver(request):
     # driver.get(TestData.BASE_URL)  launch URL in a separate method for maintainability
 
     request.cls.driver = driver  # Attach driver to test class
+    url = getattr(TestData, f'BASE_URL_{env}', None)
+    driver.get(str(url))
     driver.maximize_window()
     yield
-    print('----------------------------tearing down----------------------------')
+    log.info('----------------------------tearing down----------------------------')
     driver.quit()
+
+# # use pytest.fail only under the tests, for any other unexpected error use raiseError
+# @pytest.fixture(autouse=True)
+# def launch_application(request):
+#     env = request.config.getoption('--env').upper()
+#     log.info(f'0-----------0-0-0- {env}')
+#     if env:
+#         url = getattr(TestData, f'BASE_URL_{env}', None)
+#         self.driver.get(str(url))
+#     else:
+#         raise ValueError(f'Error !! environment argument is not valid')
 
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
@@ -71,6 +84,7 @@ def pytest_runtest_makereport(item, call):
     outcome = yield
     rep = outcome.get_result()
     if rep.when == "call" and rep.failed:
+        log.error(f"Test {item.name} failed!")  # log test failure
         if "selenium_driver" in item.fixturenames: # Assuming your driver fixture is named 'selenium_driver'
             driver = item.funcargs["selenium_driver"]
             allure.attach(

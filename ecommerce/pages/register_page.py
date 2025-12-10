@@ -1,6 +1,7 @@
 from pages.base_page import BasePage
 from selenium.webdriver.common.by import By
 from pages.success_registration import SuccessRegistration
+from utils.logger import get_logger
 
 
 class RegisterPage(BasePage):
@@ -14,6 +15,10 @@ class RegisterPage(BasePage):
     SUBSCRIBE = (By.XPATH, "//*[@name='newsletter' and @value=0]")
     POLICY = (By.XPATH, "//*[@name='agree' and @value=1]")
     CONTINUE = (By.XPATH, "//*[@type='submit']")
+
+    def __init__(self, page):
+        super().__init__(page)
+        # self.log = get_logger(__name__)
 
 
     def submit_register_form(self, form_dict):
@@ -36,7 +41,7 @@ class RegisterPage(BasePage):
                     self.do_click(field_locators[field])
                 if field == 'confirm_password':
                     self.do_send_keys(field_locators[field], form_dict['password'])
-        self.logger.info(f'user submitted registration info')
+        self.log.info(f'user submitted registration info')
         return SuccessRegistration(self.driver)
 
 
